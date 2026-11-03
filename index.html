@@ -8,7 +8,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
 <title>Labbayk Umrah Guide</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -57,11 +57,16 @@ button{ font:inherit; color:inherit; }
 .brand small{ display:block; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; opacity:.6; font-weight:600; margin-top:2px; }
 .tools{ display:flex; align-items:center; gap:8px; flex-shrink:0; }
 .aa{ height:34px; min-width:40px; border:0; border-radius:999px; background:rgba(255,255,255,.1); color:inherit; cursor:pointer; display:flex; align-items:baseline; justify-content:center; gap:1px; padding:0 10px; font-weight:800; line-height:34px; }
+.aa.icon{ width:34px; min-width:34px; padding:0; align-items:center; }
+.aa.icon svg{ width:17px; height:17px; }
 .aa .s1{ font-size:11px; } .aa .s2{ font-size:15px; }
 .aa .lvl{ display:flex; gap:2px; align-self:center; margin-left:5px; }
 .aa .lvl i{ width:4px; height:4px; border-radius:50%; background:currentColor; opacity:.3; }
 .aa .lvl i.on{ opacity:1; }
-@media (max-width:430px){ .brand .ar{ display:none; } }
+@media (max-width:430px){ .brand .ar{ display:none; } .seg button{ padding:6px 10px; } .tools{ gap:6px; } }
+@media (min-width:431px){ .brand small{ white-space:nowrap; } }
+@media (max-width:400px){ .aa .lvl{ display:none; } .aa{ padding:0 8px; } }
+.brand{ min-width:0; }
 .step{ scroll-margin-top:150px; }
 .step.current .card{ border-color:var(--accent); box-shadow:0 0 0 1px var(--accent), var(--shadow); }
 .step.current .node{ border-color:var(--accent); color:var(--accent); }
@@ -212,9 +217,9 @@ details.more[open] summary svg{ transform:rotate(90deg); }
 
 @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
 </style>
-
 </head>
 <body>
+
 <header class="top">
   <div class="wrap gutter">
     <div class="brand-row">
@@ -226,6 +231,7 @@ details.more[open] summary svg{ transform:rotate(90deg); }
         <span class="ar" lang="ar">لَبَّيْك</span>
       </div>
       <div class="tools">
+        <button type="button" class="aa icon" id="theme" aria-label="Switch to dark mode"></button>
         <button type="button" class="aa" id="aa" aria-label="Text size"><span class="s1">A</span><span class="s2">A</span><span class="lvl" aria-hidden="true"><i></i><i></i><i></i></span></button>
         <div class="seg" id="gender" role="group" aria-label="Show steps for">
           <button type="button" data-g="f" id="g-f">Female</button>
@@ -602,6 +608,10 @@ try {
     if (pr.counters) counters = { tawaf: Math.min(7, +pr.counters.tawaf || 0), saee: Math.min(7, +pr.counters.saee || 0) };
   }
 } catch (e) {}
+// Light by default; the header button switches to dark and the choice is remembered.
+let theme = 'light';
+try { if (localStorage.getItem('labbayk-theme') === 'dark') theme = 'dark'; } catch (e) {}
+document.documentElement.setAttribute('data-theme', theme);
 const SIZES = [1, 1.15, 1.3];
 let textSize = 0;
 try { const ts = +localStorage.getItem('labbayk-size'); if (ts >= 0 && ts < SIZES.length) textSize = ts; } catch (e) {}
@@ -660,6 +670,12 @@ function buzz() { try { navigator.vibrate && navigator.vibrate(25); } catch (e) 
 // ── Render ────────────────────────────────────────────────────────────────────
 function render() {
   saveProgress();
+  document.documentElement.setAttribute('data-theme', theme);
+  const tb = document.getElementById('theme');
+  tb.innerHTML = theme === 'dark'
+    ? svg('<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/>', 'stroke-width="2"')
+    : svg('<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>', 'stroke-width="2"');
+  tb.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
   document.documentElement.style.setProperty('--zoom', SIZES[textSize]);
   document.querySelectorAll('#aa .lvl i').forEach((i, k) => i.classList.toggle('on', k <= textSize));
   document.getElementById('aa').setAttribute('aria-label', 'Text size: ' + ['normal', 'large', 'extra large'][textSize] + '. Tap to change.');
@@ -948,6 +964,7 @@ function renderPreread() {
 document.querySelectorAll('#gender button').forEach(b => {
   b.onclick = () => { if (gender !== b.dataset.g) { gender = b.dataset.g; store('labbayk-gender', gender); render(); } };
 });
+document.getElementById('theme').onclick = () => { theme = theme === 'dark' ? 'light' : 'dark'; store('labbayk-theme', theme); render(); };
 document.getElementById('aa').onclick = () => { textSize = (textSize + 1) % SIZES.length; store('labbayk-size', String(textSize)); render(); };
 
 // On reopening mid-Umrah, land on the step you're up to.
