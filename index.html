@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0D3F3C">
+<meta name="description" content="Hanafi step-by-step Umrah guide with counters, duas and the stories behind each rite.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Labbayk Umrah Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Labbayk">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap">
+<style>
+/* Layout: one-handed phone app. Compact sticky header (name, gender switch, progress), a timeline of steps, and a fixed bottom tab bar for the five sections. */
+:root{
+  --bg:#F2F4F1; --surface:#FFFFFF; --surface-2:#F7F8F6; --ink:#12201F; --muted:#5D6B69; --faint:#8C9997; --line:#E1E6E2;
+  --accent:#0F5E59; --accent-ink:#FFFFFF; --accent-soft:#E2EFEC; --brass:#9A7428; --brass-soft:#F6EEDB; --brass-line:#E5D3A6;
+  --ok:#2E7D52; --ok-soft:#E3F2E9; --header:#0D3F3C; --header-ink:#F1F7F5;
+  --shadow:0 1px 2px rgba(18,32,31,.05), 0 4px 16px rgba(18,32,31,.06);
+  --ui:"Plus Jakarta Sans", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --ar:"Amiri", "Noto Naskh Arabic", "Geeza Pro", serif;
+  --r:16px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0A1211; --surface:#121C1B; --surface-2:#172322; --ink:#E6EEEC; --muted:#95A5A2; --faint:#6E7F7C; --line:#22302E;
+  --accent:#5CC2B4; --accent-ink:#06201D; --accent-soft:#143330; --brass:#D9B66C; --brass-soft:#272114; --brass-line:#4A3D20;
+  --ok:#62CC93; --ok-soft:#14301F; --header:#0A1C1B; --header-ink:#E6EEEC;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 6px 20px rgba(0,0,0,.25); color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0A1211; --surface:#121C1B; --surface-2:#172322; --ink:#E6EEEC; --muted:#95A5A2; --faint:#6E7F7C; --line:#22302E;
+  --accent:#5CC2B4; --accent-ink:#06201D; --accent-soft:#143330; --brass:#D9B66C; --brass-soft:#272114; --brass-line:#4A3D20;
+  --ok:#62CC93; --ok-soft:#14301F; --header:#0A1C1B; --header-ink:#E6EEEC;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 6px 20px rgba(0,0,0,.25); color-scheme:dark }
+
+*{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:var(--ui); font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+body::before{ content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:40; background:var(--header); }
+button{ font:inherit; color:inherit; }
+:focus-visible{ outline:2px solid var(--brass); outline-offset:2px; }
+.gutter{ padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px)); }
+.wrap{ max-width:520px; margin:0 auto; }
+
+/* Header */
+.top{ position:sticky; top:env(safe-area-inset-top,0px); z-index:30; background:var(--header); color:var(--header-ink); }
+.top .wrap{ padding-block:14px 12px; display:grid; gap:12px; }
+.brand-row{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.brand{ display:flex; align-items:baseline; gap:10px; min-width:0; }
+.brand h1{ margin:0; font-size:21px; font-weight:800; letter-spacing:-.02em; }
+.brand .ar{ font-family:var(--ar); font-size:20px; opacity:.75; line-height:1; }
+.brand small{ display:block; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; opacity:.6; font-weight:600; margin-top:2px; }
+.tools{ display:flex; align-items:center; gap:8px; flex-shrink:0; }
+.aa{ height:34px; min-width:40px; border:0; border-radius:999px; background:rgba(255,255,255,.1); color:inherit; cursor:pointer; display:flex; align-items:baseline; justify-content:center; gap:1px; padding:0 10px; font-weight:800; line-height:34px; }
+.aa .s1{ font-size:11px; } .aa .s2{ font-size:15px; }
+.aa .lvl{ display:flex; gap:2px; align-self:center; margin-left:5px; }
+.aa .lvl i{ width:4px; height:4px; border-radius:50%; background:currentColor; opacity:.3; }
+.aa .lvl i.on{ opacity:1; }
+@media (max-width:430px){ .brand .ar{ display:none; } }
+.step{ scroll-margin-top:150px; }
+.step.current .card{ border-color:var(--accent); box-shadow:0 0 0 1px var(--accent), var(--shadow); }
+.step.current .node{ border-color:var(--accent); color:var(--accent); }
+.now-tag{ justify-self:start; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:800; color:var(--accent); background:var(--accent-soft); padding:3px 9px; border-radius:99px; }
+.resume{ width:100%; margin-top:14px; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:13px 16px; border:0; border-radius:14px; background:var(--accent); color:var(--accent-ink); cursor:pointer; text-align:left; box-shadow:var(--shadow); }
+.resume small{ display:block; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; opacity:.75; font-weight:700; }
+.resume b{ font-size:15px; }
+.resume svg{ width:20px; height:20px; flex-shrink:0; }
+.reset-row{ margin-top:28px; display:grid; gap:8px; justify-items:center; text-align:center; }
+.reset-row p{ margin:0; font-size:13px; color:var(--muted); max-width:40ch; }
+.btn.danger{ background:transparent; color:#B4452F; border-color:#E2B4A8; }
+.saved{ margin:10px 0 0; font-size:12px; color:var(--faint); text-align:center; }
+.seg{ display:flex; background:rgba(255,255,255,.1); border-radius:999px; padding:3px; flex-shrink:0; }
+.seg button{ border:0; background:none; color:inherit; font-size:12.5px; font-weight:600; padding:6px 13px; border-radius:999px; cursor:pointer; opacity:.75; transition:background .2s, color .2s; }
+.seg button[aria-pressed="true"]{ background:var(--header-ink); color:var(--header); opacity:1; }
+.prog{ display:flex; align-items:center; gap:10px; font-size:12px; font-weight:600; font-variant-numeric:tabular-nums; }
+.prog .track{ flex:1; height:4px; border-radius:99px; background:rgba(255,255,255,.14); overflow:hidden; }
+.prog .fill{ height:100%; width:0; background:linear-gradient(90deg, #C9A04A, #EFD08A); border-radius:99px; transition:width .45s ease; }
+.prog span{ opacity:.8; min-width:7ch; text-align:right; }
+
+/* Section heading */
+main{ padding-bottom:calc(96px + env(safe-area-inset-bottom,0px)); }
+.heading{ padding-block:24px 6px; display:flex; justify-content:space-between; align-items:flex-end; gap:12px; }
+.eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--brass); font-weight:700; margin:0 0 4px; }
+.heading h2{ margin:0; font-size:28px; line-height:1.15; font-weight:800; letter-spacing:-.025em; text-wrap:balance; }
+.heading p.sub{ margin:4px 0 0; color:var(--muted); font-size:14px; }
+.pill{ flex-shrink:0; font-size:12px; font-weight:700; padding:5px 10px; border-radius:99px; background:var(--accent-soft); color:var(--accent); font-variant-numeric:tabular-nums; white-space:nowrap; }
+.pill.ok{ background:var(--ok-soft); color:var(--ok); }
+
+/* Timeline */
+.timeline{ list-style:none; margin:16px 0 0; padding:0; }
+.step{ display:grid; grid-template-columns:36px 1fr; gap:14px; position:relative; padding-bottom:22px; }
+.step::before{ content:""; position:absolute; left:17px; top:40px; bottom:4px; width:2px; background:var(--line); border-radius:2px; }
+.step:last-child::before{ display:none; }
+.node{ width:36px; height:36px; border-radius:50%; border:2px solid var(--line); background:var(--surface); display:grid; place-items:center; font-size:13px; font-weight:800; color:var(--muted); cursor:pointer; padding:0; transition:all .2s; font-variant-numeric:tabular-nums; }
+.node svg{ width:16px; height:16px; }
+.node.count{ border-color:var(--accent-soft); background:var(--accent-soft); color:var(--accent); cursor:default; }
+.step.done .node{ background:var(--ok); border-color:var(--ok); color:#fff; }
+.card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:16px; box-shadow:var(--shadow); min-width:0; display:grid; gap:12px; transition:opacity .2s; }
+.step.done .card{ opacity:.55; box-shadow:none; }
+.step-text{ margin:0; font-size:calc(16px * var(--zoom,1)); line-height:1.7; white-space:pre-line; font-weight:500; }
+.note{ display:flex; gap:10px; align-items:flex-start; background:var(--surface-2); border-radius:12px; padding:10px 12px; }
+.note svg{ flex-shrink:0; width:16px; height:16px; color:var(--brass); margin-top:3px; }
+.note p{ margin:0; font-size:calc(14px * var(--zoom,1)); line-height:1.6; color:var(--ink); }
+
+/* Dua */
+.dua-box{ background:var(--brass-soft); border:1px solid var(--brass-line); border-radius:14px; padding:16px; display:grid; gap:8px; }
+.dua-arabic{ font-family:var(--ar); font-size:calc(24px * var(--zoom,1)); line-height:2; text-align:right; direction:rtl; margin:0; color:var(--ink); }
+.dua-roman{ margin:0; font-size:calc(14px * var(--zoom,1)); font-style:italic; color:var(--brass); line-height:1.6; }
+.dua-meaning{ margin:0; font-size:calc(14px * var(--zoom,1)); line-height:1.6; color:var(--ink); }
+
+/* Learn more */
+details.more{ border-top:1px solid var(--line); padding-top:10px; }
+details.more summary{ list-style:none; cursor:pointer; font-size:13.5px; font-weight:700; color:var(--accent); display:flex; align-items:center; gap:6px; }
+details.more summary::-webkit-details-marker{ display:none; }
+details.more summary svg{ width:14px; height:14px; transition:transform .2s; }
+details.more[open] summary svg{ transform:rotate(90deg); }
+.more-body{ margin-top:10px; display:grid; gap:8px; }
+.more-body p{ margin:0; font-size:calc(14px * var(--zoom,1)); line-height:1.65; }
+.more-body .hist{ padding-left:12px; border-left:2px solid var(--accent); color:var(--ink); }
+.more-body ul{ margin:0; padding-left:18px; display:grid; gap:6px; }
+.more-body li{ font-size:calc(14px * var(--zoom,1)); line-height:1.6; }
+.more-body li::marker{ color:var(--brass); }
+
+/* Buttons */
+.btn{ justify-self:start; display:inline-flex; align-items:center; gap:8px; border-radius:99px; padding:9px 16px; font-size:13.5px; font-weight:700; cursor:pointer; border:1.5px solid var(--accent); background:var(--accent); color:var(--accent-ink); transition:all .2s; }
+.btn svg{ width:15px; height:15px; }
+.btn.ghost{ background:transparent; color:var(--muted); border-color:var(--line); }
+.next{ width:100%; margin-top:10px; padding:16px 18px; border-radius:var(--r); border:1px solid var(--line); background:var(--surface); color:var(--ink); font-size:15px; font-weight:700; cursor:pointer; display:flex; justify-content:space-between; align-items:center; box-shadow:var(--shadow); }
+.next.ready{ background:var(--accent); border-color:var(--accent); color:var(--accent-ink); }
+.next small{ display:block; font-size:11px; letter-spacing:.12em; text-transform:uppercase; opacity:.7; font-weight:700; text-align:left; }
+.next svg{ width:20px; height:20px; }
+
+/* Counter */
+.counter{ background:var(--surface-2); border-radius:16px; padding:18px 16px; display:grid; gap:14px; justify-items:center; }
+.ring{ position:relative; width:168px; height:168px; }
+.ring svg{ width:100%; height:100%; transform:rotate(-90deg); }
+.ring .seg-bg{ stroke:var(--line); }
+.ring .seg-on{ stroke:var(--accent); transition:stroke .25s; }
+.counter.complete .ring .seg-on{ stroke:var(--ok); }
+.ring-center{ position:absolute; inset:0; display:grid; place-content:center; text-align:center; }
+.ring-center b{ font-size:52px; line-height:1; font-weight:800; letter-spacing:-.03em; font-variant-numeric:tabular-nums; color:var(--accent); }
+.counter.complete .ring-center b{ color:var(--ok); }
+.ring-center span{ font-size:12px; color:var(--muted); font-weight:600; margin-top:4px; }
+.counter-label{ margin:0; font-size:13px; font-weight:700; color:var(--muted); letter-spacing:.02em; }
+.counter-btns{ display:flex; gap:10px; width:100%; }
+.counter-btns button{ height:56px; border-radius:14px; cursor:pointer; font-weight:700; }
+.minus{ width:56px; flex-shrink:0; border:1px solid var(--line); background:var(--surface); color:var(--ink); font-size:24px; }
+.minus:disabled{ opacity:.3; cursor:not-allowed; }
+.add{ flex:1; border:0; background:var(--accent); color:var(--accent-ink); font-size:15.5px; }
+.counter.complete .add{ background:var(--ok); color:#fff; cursor:default; }
+.alh{ margin:0; font-family:var(--ar); font-size:22px; color:var(--ok); }
+
+/* Completion */
+.complete-card{ margin-top:18px; border-radius:20px; padding:28px 22px; text-align:center; color:#F1F7F5; background:radial-gradient(120% 120% at 50% 0%, #17635D 0%, #0B2E2B 70%); box-shadow:var(--shadow); }
+.complete-card .ar{ font-family:var(--ar); font-size:32px; margin:0 0 6px; line-height:1.7; }
+.complete-card .rom{ margin:0 0 4px; font-style:italic; font-size:16px; }
+.complete-card p:last-child{ margin:0; font-size:14px; opacity:.8; }
+
+/* Pre-read */
+.intro{ margin:14px 0 0; color:var(--muted); font-size:calc(15px * var(--zoom,1)); line-height:1.65; max-width:62ch; }
+.group{ margin:26px 0 10px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--brass); font-weight:700; }
+.stories{ display:grid; gap:10px; }
+.story{ background:var(--surface); border:1px solid var(--line); border-radius:var(--r); box-shadow:var(--shadow); overflow:hidden; }
+.story.feature{ background:linear-gradient(180deg, var(--brass-soft), var(--surface) 80%); border-color:var(--brass-line); }
+.story summary{ list-style:none; cursor:pointer; padding:15px 16px; display:grid; grid-template-columns:32px 1fr 16px; gap:12px; align-items:center; }
+.story summary::-webkit-details-marker{ display:none; }
+.badge{ width:32px; height:32px; border-radius:10px; display:grid; place-items:center; font-weight:800; font-size:13px; background:var(--accent-soft); color:var(--accent); font-variant-numeric:tabular-nums; }
+.badge svg{ width:17px; height:17px; }
+.story.read .badge{ background:var(--ok); color:#fff; }
+.story.feature .badge{ background:var(--brass); color:var(--surface); }
+.s-title{ margin:0; font-size:calc(16px * var(--zoom,1)); font-weight:700; line-height:1.35; }
+.s-meta{ margin:2px 0 0; font-size:calc(13px * var(--zoom,1)); color:var(--muted); line-height:1.45; }
+.chev{ width:16px; height:16px; color:var(--faint); transition:transform .2s; }
+.story[open] .chev{ transform:rotate(90deg); }
+.story-body{ padding:4px 16px 18px; border-top:1px solid var(--line); display:grid; gap:0; }
+.story-body h4{ margin:20px 0 6px; font-size:calc(15px * var(--zoom,1)); font-weight:800; color:var(--accent); letter-spacing:-.01em; }
+.story-body p{ margin:0 0 10px; font-size:calc(15px * var(--zoom,1)); line-height:1.75; }
+.story-body ul{ margin:0 0 10px; padding-left:18px; }
+.story-body li{ font-size:calc(15px * var(--zoom,1)); line-height:1.7; margin-bottom:6px; }
+.story-body li::marker{ color:var(--brass); }
+.story-body .src{ font-size:12.5px; color:var(--muted); }
+.story-body .dua-box{ margin:6px 0 14px; }
+.live-it{ margin-top:14px; background:var(--accent-soft); border-radius:12px; padding:14px; }
+.live-it h5{ margin:0 0 8px; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:800; }
+.live-it ul{ margin:0; padding-left:16px; }
+.live-it li{ font-size:calc(14px * var(--zoom,1)); line-height:1.6; margin-bottom:5px; }
+.aside{ margin-top:14px; background:var(--brass-soft); border:1px solid var(--brass-line); border-radius:12px; padding:12px 14px; }
+.aside p{ margin:0; font-size:calc(14px * var(--zoom,1)); line-height:1.65; }
+.story .btn{ margin-top:16px; }
+.short{ padding:0 16px 16px; display:grid; gap:8px; }
+.short p{ margin:0; font-size:calc(15px * var(--zoom,1)); line-height:1.7; }
+.where{ display:flex; gap:8px; align-items:flex-start; font-size:calc(13.5px * var(--zoom,1)); font-weight:600; color:var(--accent); }
+.where svg{ flex-shrink:0; width:15px; height:15px; margin-top:3px; }
+.carry{ margin-top:24px; border-radius:var(--r); padding:18px; background:var(--header); color:var(--header-ink); }
+.carry h3{ margin:0 0 10px; font-size:15px; font-weight:800; }
+.carry ul{ margin:0; padding-left:18px; display:grid; gap:6px; }
+.carry li{ font-size:14px; line-height:1.6; opacity:.92; }
+
+/* Bottom tab bar */
+.tabbar{ position:fixed; left:0; right:0; bottom:0; z-index:30; background:color-mix(in srgb, var(--surface) 88%, transparent); -webkit-backdrop-filter:saturate(1.6) blur(16px); backdrop-filter:saturate(1.6) blur(16px); border-top:1px solid var(--line); padding-bottom:env(safe-area-inset-bottom,0px); }
+.tabbar .wrap{ display:grid; grid-template-columns:repeat(5,1fr); }
+.tab{ border:0; background:none; cursor:pointer; padding:9px 2px 10px; display:grid; justify-items:center; gap:3px; color:var(--faint); font-size:11px; font-weight:600; position:relative; }
+.tab svg{ width:22px; height:22px; }
+.tab.active{ color:var(--accent); }
+.tab.active::before{ content:""; position:absolute; top:0; left:30%; right:30%; height:2.5px; border-radius:0 0 3px 3px; background:var(--accent); }
+.tab .dot{ position:absolute; top:7px; right:calc(50% - 17px); width:8px; height:8px; border-radius:50%; background:var(--ok); border:2px solid var(--surface); }
+
+@media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+</style>
+
+</head>
+<body>
+<header class="top">
+  <div class="wrap gutter">
+    <div class="brand-row">
+      <div class="brand">
+        <div>
+          <h1>Labbayk</h1>
+          <small>Umrah guide · Hanafi</small>
+        </div>
+        <span class="ar" lang="ar">لَبَّيْك</span>
+      </div>
+      <div class="tools">
+        <button type="button" class="aa" id="aa" aria-label="Text size"><span class="s1">A</span><span class="s2">A</span><span class="lvl" aria-hidden="true"><i></i><i></i><i></i></span></button>
+        <div class="seg" id="gender" role="group" aria-label="Show steps for">
+          <button type="button" data-g="f" id="g-f">Female</button>
+          <button type="button" data-g="m" id="g-m">Male</button>
+        </div>
+      </div>
+    </div>
+    <div class="prog" aria-label="Umrah progress">
+      <div class="track"><div class="fill" id="fill"></div></div>
+      <span id="pct">0% done</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap gutter">
+    <div class="heading">
+      <div>
+        <p class="eyebrow" id="eyebrow"></p>
+        <h2 id="title"></h2>
+        <p class="sub" id="sub"></p>
+      </div>
+      <span class="pill" id="count"></span>
+    </div>
+    <div id="content"></div>
+  </div>
+</main>
+
+<nav class="tabbar" aria-label="Sections">
+  <div class="wrap gutter" id="tabs"></div>
+</nav>
+
+<script>
+const SECTIONS = [
+  { key:'preread',    label:'Pre-read', emoji:'📖', sub:'The stories behind the places' },
+  { key:'ihram',      label:'Ihram',  emoji:'🌿', sub:'Before the Miqat' },
+  { key:'tawaf',      label:'Tawaf',  emoji:'🕋', sub:'7 circuits'       },
+  { key:'saee',       label:"Sa'ee",  emoji:'🏃‍♀️', sub:'7 laps'           },
+  { key:'completion', label:'Done',   emoji:'✂️', sub:'Final step'       },
+];
+
+// ── Pre-read stories ──────────────────────────────────────────────────────────
+const STORIES = [
+  { id:'ibrahim', title:'Ibrahim, Ismail and Hajar', meta:'The origin of the Kaaba, sa\'ee and Zamzam', body:`
+    <h4>The valley</h4>
+    <p>Allah commanded Ibrahim (AS) to take his wife Hajar and their infant son Ismail to a barren valley with no water, no crops and no people. That valley became Makkah. He left them near the spot where the Kaaba would later stand, with only a bag of dates and a skin of water.</p>
+    <p>As he walked away, Hajar followed him and asked again and again why he was leaving them there. He didn't answer. Finally she asked, <em>"Did Allah command you to do this?"</em> He said yes. She replied that, if so, Allah would not abandon them, and she returned to her son. Her certainty is the spirit of the whole pilgrimage. <span class="src">(Ibn Abbas, Sahih al-Bukhari 3364)</span></p>
+    <h4>Ibrahim's du'a</h4>
+    <p>Out of sight, Ibrahim turned toward the place of the House and prayed that Allah make people's hearts incline toward this valley and provide its people with fruits <span class="src">(Qur'an 14:37)</span>. Every crowd in the Haram, and every fruit stall in Makkah, is that du'a being answered.</p>
+    <h4>The search between Safa and Marwah</h4>
+    <p>When the water ran out, Hajar's milk dried up and Ismail began to cry in distress. She climbed Safa to look for anyone, saw no one, and came down. In the low part of the valley she hitched up her dress and <em>ran</em> until she reached Marwah, then climbed it and looked again. She did this seven times.</p>
+    <h4>Zamzam</h4>
+    <p>On the seventh round she heard a sound. An angel, Jibril, struck the ground near Ismail, and water burst out. Hajar hurried to contain it, building a basin around it with her hands. The Prophet ﷺ said that if she had left it alone, Zamzam would have become a flowing stream on the surface. Soon the Jurhum tribe passed by, saw birds circling, and asked her permission to settle. Makkah began as a town around this well.</p>
+    <h4>The sacrifice</h4>
+    <p>When Ismail was old enough to work beside his father, Ibrahim saw in a dream that he was sacrificing him. Ismail told him to do as he was commanded, and that he would find him patient <span class="src">(Qur'an 37:102)</span>. Both submitted, and Allah ransomed Ismail with a ram. This is the root of Eid al-Adha and of the stoning rituals of Hajj in Mina.</p>
+    <h4>Building the House</h4>
+    <p>Years later Ibrahim returned, and father and son raised the foundations of the Kaaba together. Ismail brought the stones and Ibrahim laid them. As the walls grew higher, Ibrahim stood on a stone to keep building. That stone is the <strong>Maqam Ibrahim</strong>, and his footprints are still visible in it. As they worked they prayed:</p>
+    <div class="dua-box">
+      <p class="dua-arabic">رَبَّنَا تَقَبَّلْ مِنَّا إِنَّكَ أَنْتَ السَّمِيعُ الْعَلِيمُ</p>
+      <p class="dua-roman">Rabbanā taqabbal minnā, innaka antas-Samī'ul-'Alīm</p>
+      <p class="dua-meaning">Our Lord, accept this from us; You are the All-Hearing, the All-Knowing. (Qur'an 2:127)</p>
+    </div>
+    <p>They also asked Allah to send a messenger from among their descendants <span class="src">(2:129)</span>. Muslims understand this du'a to have been fulfilled about 2,500 years later in the Prophet Muhammad ﷺ, a descendant of Ismail.</p>
+    <p>Allah then commanded Ibrahim to call people to pilgrimage <span class="src">(22:27)</span>. Ibrahim asked how his voice could reach anyone, and Allah told him that his task was to call and that Allah would make it reach. Your Talbiyah is the answer to that call.</p>
+    <div class="live-it"><h5>Where you'll live this story</h5><ul>
+      <li><strong>Tawaf</strong> circles the House that Ibrahim and Ismail built.</li>
+      <li><strong>The two rak'ahs after tawaf</strong> are prayed behind Maqam Ibrahim: "Take the station of Ibrahim as a place of prayer" (2:125).</li>
+      <li><strong>Sa'ee</strong> retraces Hajar's steps. The green-lit section marks the low valley floor where she ran. You are walking the path of a mother's trust.</li>
+      <li><strong>Zamzam</strong> is for whatever it is drunk for (Ibn Majah). Make a specific intention each time you drink.</li>
+      <li><strong>Hijr Ismail</strong>, the semicircle beside the Kaaba, is part of the original House. Praying inside it counts as praying inside the Kaaba.</li>
+    </ul></div>` },
+
+  { id:'makkan', title:'The Makkan period', meta:'Revelation at Hira, persecution, the Year of Sorrow', body:`
+    <h4>Before prophethood</h4>
+    <p>The Prophet ﷺ was born in Makkah around 570 CE, in the Year of the Elephant. His father died before he was born, his mother when he was six, and his grandfather Abdul-Muttalib two years later. His uncle Abu Talib raised him. He became known as <strong>al-Amin</strong>, the trustworthy. At 25 he married <strong>Khadijah (RA)</strong>, a respected businesswoman who had employed him in trade.</p>
+    <p>At around 35, the Quraysh rebuilt the Kaaba, and the clans nearly fought over who would set the Black Stone back in place. They agreed to let the next man to enter decide, and it was Muhammad ﷺ. He spread his cloak, placed the Stone on it, had a leader from each clan lift a corner, and then set the Stone in place with his own hands. The Black Stone you'll see was put in place by the Prophet ﷺ himself.</p>
+    <h4>Hira</h4>
+    <p>In his late thirties he began retreating to a small cave near the top of <strong>Jabal al-Nur</strong> to reflect and worship. In Ramadan of 610 CE, at age 40, the angel Jibril appeared and commanded him: <em>"Iqra!"</em> ("Read!"). He answered, "I am not one who reads." Jibril embraced him tightly and repeated the command, three times in all. Then came the first revealed verses:</p>
+    <div class="dua-box">
+      <p class="dua-arabic">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</p>
+      <p class="dua-roman">Iqra' bismi rabbikal-ladhī khalaq</p>
+      <p class="dua-meaning">Read in the name of your Lord who created. (Qur'an 96:1)</p>
+    </div>
+    <p>He came down trembling and went to Khadijah, saying, "Cover me, cover me." She reassured him: Allah would never disgrace him, because he kept family ties, helped the weak, gave to the poor, honored guests, and stood by people in hardship. She became the first person to believe in him. Her cousin <strong>Waraqah ibn Nawfal</strong>, an elderly Christian scholar, recognized this as the same angelic messenger sent to Musa, and warned that his people would drive him out. <span class="src">(Sahih al-Bukhari 3)</span></p>
+    <h4>The call becomes public</h4>
+    <p>After about three years of quiet preaching, the Prophet ﷺ climbed <strong>Safa</strong>, the same hill where you'll begin sa'ee, and called out to the clans of Quraysh. He asked whether they would believe him if he told them an army was behind the hill. They said yes, because they had never known him to lie. He told them he was a warner before a severe punishment. His uncle <strong>Abu Lahab</strong> cursed him, and Surah al-Masad (111) was revealed in response.</p>
+    <h4>Persecution</h4>
+    <ul>
+      <li><strong>Bilal ibn Rabah</strong> was laid on the burning sand with a boulder on his chest. He would only repeat <em>"Ahad, Ahad"</em> ("One, One").</li>
+      <li><strong>Sumayyah</strong>, mother of Ammar, became the first martyr of Islam. The Prophet ﷺ told her family to be patient, because their promised meeting place was Paradise.</li>
+      <li>The Prophet ﷺ himself was mocked and called a madman. Once, while he was in sujood near the Kaaba, filth from a slaughtered camel was dumped on his back. His daughter Fatimah came and cleaned it off.</li>
+      <li>Some Muslims migrated to <strong>Abyssinia</strong> under the just Christian king, the Najashi.</li>
+      <li>The conversions of <strong>Hamza</strong> and then <strong>Umar</strong> gave the Muslims new strength.</li>
+      <li>Around 616 CE the Quraysh imposed a <strong>boycott</strong>, confining the Prophet's clan to a valley for about three years. Hunger was so severe that people ate leaves.</li>
+    </ul>
+    <h4>The Year of Sorrow (619 CE)</h4>
+    <p>Shortly after the boycott ended, Abu Talib died. He never accepted Islam, but he had protected his nephew all his life. Within weeks, <strong>Khadijah</strong> died: his wife of 25 years, his first believer and his greatest support. He remembered her with deep love for the rest of his life.</p>
+    <h4>Ta'if</h4>
+    <p>With his protection gone, he walked to Ta'if to seek support. Its leaders rejected him and set people on him who pelted him with stones until his feet bled. Resting in an orchard, he made a heartbreaking du'a: as long as Allah was not displeased with him, he did not care about anything else. The Angel of the Mountains offered to crush the city between two mountains. He refused, hoping that from their descendants would come people who worship Allah alone. That hope came true.</p>
+    <p>Soon after came the <strong>Isra' and Mi'raj</strong>, the Night Journey from Masjid al-Haram to Jerusalem and the ascension through the heavens, where the five daily prayers were prescribed.</p>
+    <h4>The way out</h4>
+    <p>At the pilgrimage seasons, the Prophet ﷺ met people from Yathrib (Madinah). They pledged allegiance at <strong>Aqabah</strong> in 621 and 622, which opened the door to the Hijrah.</p>
+    <div class="live-it"><h5>Where you'll see it</h5><ul>
+      <li><strong>Jabal al-Nur</strong> is visible from much of Makkah. The hike to Hira is steep; go early in the morning. It isn't part of Umrah.</li>
+      <li><strong>Jannat al-Mu'alla</strong> cemetery is where Khadijah is buried.</li>
+      <li><strong>Safa</strong>, where you'll start sa'ee, is where he first preached openly.</li>
+      <li>When you point to <strong>the Black Stone</strong>, remember whose hands set it in place.</li>
+    </ul></div>` },
+
+  { id:'hijrah', title:'The Hijrah', meta:'Cave Thawr, arrival at Quba, the stay with Abu Ayyub al-Ansari', body:`
+    <h4>The plot</h4>
+    <p>By 622 CE most Muslims had quietly left for Madinah. The Quraysh agreed that one young man from each clan would strike the Prophet ﷺ at once, so no single clan could be held responsible. Allah informed him of the plot. That night <strong>Ali (RA)</strong> slept in his bed under his green cloak, and stayed behind to return the valuables people had entrusted to the Prophet. Even his enemies trusted him with their belongings. The Prophet ﷺ walked out past the assassins at his door, reciting from Surah Ya-Sin (36:9), and they did not see him.</p>
+    <h4>Cave Thawr</h4>
+    <p>He and <strong>Abu Bakr (RA)</strong> headed <em>south</em> to Mount Thawr, the opposite direction from Madinah, and hid in a cave for three nights. The plan was careful:</p>
+    <ul>
+      <li>Abu Bakr's son <strong>Abdullah</strong> gathered news in Makkah by day and brought it to the cave at night.</li>
+      <li>His freed slave <strong>Amir ibn Fuhayrah</strong> grazed sheep over their tracks to erase them.</li>
+      <li>His daughter <strong>Asma</strong> brought food. She tore her waistband in two to tie up the provisions, and was honored as <em>Dhat an-Nitaqayn</em>, "she of the two waistbands."</li>
+      <li>They hired a guide, <strong>Abdullah ibn Urayqit</strong>, who was not Muslim but was trustworthy.</li>
+    </ul>
+    <p>The Quraysh offered a bounty of 100 camels and sent trackers, who climbed right up to the cave's mouth. Abu Bakr whispered that if one of them looked down at his own feet, he would see them. The Prophet ﷺ answered, <em>"What do you think of two, when Allah is their third?"</em></p>
+    <div class="dua-box">
+      <p class="dua-arabic">لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا</p>
+      <p class="dua-roman">Lā taḥzan innallāha ma'anā</p>
+      <p class="dua-meaning">Do not grieve; indeed Allah is with us. (Qur'an 9:40)</p>
+    </div>
+    <p class="src">You'll often hear that a spider spun a web and doves nested at the entrance. That story is widely loved, but its chains of narration are weaker than the core account.</p>
+    <h4>The road</h4>
+    <p>On the way north, <strong>Suraqa ibn Malik</strong> chased them hoping to collect the bounty. Three times his horse's legs sank into the sand. He asked for safety, and the Prophet ﷺ promised he would one day wear the bracelets of Kisra, the Persian emperor. Years later, under Umar's caliphate, Persia's treasures came to Madinah and Umar placed those bracelets on Suraqa's arms.</p>
+    <h4>Quba</h4>
+    <p>The Muslims of Madinah walked out every morning to the edge of the city and waited in the heat until midday. One day a man spotted the travelers and cried out, and the town rushed to greet them. The Prophet ﷺ stayed in <strong>Quba</strong> for several days and laid the foundation of the <strong>first mosque in Islam</strong>, described as founded on taqwa from the first day <span class="src">(9:108)</span>. He ﷺ later said that whoever purifies himself at home, then comes to Masjid Quba and prays there, receives the reward of an umrah <span class="src">(Ibn Majah, an-Nasa'i)</span>. He used to visit it every Saturday.</p>
+    <h4>Entering Madinah</h4>
+    <p>On the way in he led the first Jumu'ah prayer. Every family wanted to host him and grabbed at the reins of his camel, <strong>al-Qaswa</strong>. He told them to let her go, because she was under command. She knelt on a plot belonging to two orphans, Sahl and Suhayl. That land was purchased and became the site of <strong>Masjid an-Nabawi</strong>.</p>
+    <h4>Abu Ayyub al-Ansari</h4>
+    <p>The closest house belonged to <strong>Abu Ayyub (Khalid ibn Zayd)</strong>, and the Prophet ﷺ stayed there about seven months, until his rooms beside the mosque were finished. He chose the ground floor so visitors could reach him easily. Abu Ayyub and his wife were deeply uncomfortable sleeping above him. One night a jar of water broke upstairs, and they used their only blanket to soak it up so not a drop would drip on him. Abu Ayyub then begged him to switch floors, and he agreed. When food was sent back down, they would look for the places the Prophet's fingers had touched and eat from there.</p>
+    <div class="aside"><p>🔗 <strong>A link to your trip:</strong> Decades later, as an old man, Abu Ayyub joined the army besieging Constantinople and died there around 672 CE, asking to be buried as close to the walls as possible. His tomb is the <strong>Eyüp Sultan Mosque</strong> in Istanbul. Visiting it after Madinah ties the two halves of your trip together: where he hosted the Prophet ﷺ, and where he was laid to rest.</p></div>
+    <div class="live-it"><h5>Where you'll see it</h5><ul>
+      <li><strong>Masjid Quba:</strong> make wudu at the hotel first, then go, for the reward of an umrah.</li>
+      <li><strong>Masjid an-Nabawi</strong> stands on the orphans' land where al-Qaswa knelt.</li>
+      <li><strong>Mount Thawr</strong> is south of Makkah; worth seeing on a ziyarah drive.</li>
+      <li><strong>Eyüp Sultan Mosque</strong> in Istanbul.</li>
+    </ul></div>` },
+];
+
+const KAABA = { title:'Looking at the Ka\'bah', meta:'The reward, what it means, and how to take it in', body:`
+    <h4>The first sight</h4>
+    <p>You've faced this building in every prayer of your life without seeing it. When it first comes into view, don't rush to start tawaf or take out your phone. Stop, raise your hands, and ask. Many scholars held that du'a at the first sight of the Ka'bah is especially hoped to be answered. Decide in advance what you'll ask for first, so the moment doesn't pass in a blur.</p>
+    <p>Some early generations would say a du'a like this on seeing it. Its chain to the Prophet ﷺ is weak, so say it as a beautiful du'a rather than a sunnah:</p>
+    <div class="dua-box">
+      <p class="dua-arabic">اللّٰهُمَّ زِدْ هٰذَا الْبَيْتَ تَشْرِيفًا وَتَعْظِيمًا وَتَكْرِيمًا وَمَهَابَةً</p>
+      <p class="dua-roman">Allāhumma zid hādhal-bayta tashrīfan wa ta'ẓīman wa takrīman wa mahābah</p>
+      <p class="dua-meaning">O Allah, increase this House in honor, greatness, nobility and awe.</p>
+    </div>
+    <h4>The reward for looking at it</h4>
+    <p>Simply looking at the Ka'bah is counted as worship.</p>
+    <p>A narration from Ibn Abbas describes how the mercy is shared out:</p>
+    <div class="dua-box">
+      <p class="dua-meaning">"Allah sends down upon this House one hundred and twenty mercies every day: sixty for those making tawaf, forty for those praying, and twenty for those looking at it."</p>
+      <p class="dua-roman" style="margin:8px 0 0">al-Tabarani; al-Bayhaqi, Shu'ab al-Iman</p>
+    </div>
+    <p>Its chain is graded weak by hadith scholars, so it isn't certain the Prophet ﷺ said it. Many scholars still cite it to encourage good deeds, and its meaning matches what early scholars taught. It also shows that every way of being near the House earns mercy: when you're too tired for another tawaf, or the mataf is too packed, sitting and looking still counts.</p>
+    <p>Sa'id ibn al-Musayyib, one of the great early scholars, said that whoever looks at the Ka'bah with faith and sincerity has his sins fall away like leaves from a tree.</p>
+    <h4>The angels' tawaf above you</h4>
+    <p>On the Night Journey, the Prophet ﷺ was shown <strong>al-Bayt al-Ma'mur</strong>, the "Frequented House" in the seventh heaven. Seventy thousand angels enter it every day to worship, and they never return to it again, because their turn never comes back (Sahih al-Bukhari 3207; Sahih Muslim 162). Allah swears by it in Surah at-Tur (52:4). Early commentators described it as lying directly above the Ka'bah, so that if it fell, it would fall onto it.</p>
+    <p>So when you join the tawaf, you are not only joining the crowd around you. You are mirroring a worship that goes on, without pause, in the heavens above. And the person the Prophet ﷺ saw sitting with his back against al-Bayt al-Ma'mur was <strong>Ibrahim (AS)</strong>, the builder of the House you are circling.</p>
+    <h4>It never stops</h4>
+    <p>Apart from the moments of congregational prayer, tawaf around the Ka'bah almost never stops, day or night, heat or rain. People have circled it for thousands of years, since Ibrahim and Ismail. When you step into the flow, you join a line that runs back through the Prophet ﷺ, the companions, and every pilgrim since, and that will carry on after you leave.</p>
+    <h4>What it means</h4>
+    <ul>
+      <li><strong>Simplicity.</strong> It is a plain cube of stone, empty inside. There is no image or statue to look at. The point is not the building; it is the One it belongs to. Surah Quraysh calls Allah <em>"the Lord of this House"</em> (106:3).</li>
+      <li><strong>The first House.</strong> "The first House set up for mankind is the one at Bakkah, blessed and a guidance for the worlds" (3:96).</li>
+      <li><strong>The center of every circle.</strong> Everywhere else, Muslims pray in straight rows. Here, and only here, the rows bend into rings around one point. You can see people praying toward you from the other side. This is what the whole ummah looks like from above.</li>
+      <li><strong>The answer to a du'a.</strong> Ibrahim asked Allah to make hearts incline toward this valley (14:37). Your own longing to be here is part of that answer.</li>
+    </ul>
+    <h4>Something greater than the Ka'bah</h4>
+    <p>Ibn Umar reported that the Prophet ﷺ looked at the Ka'bah and said: <em>"How pure you are, how pure your fragrance; how great you are and how great your sanctity. But by Him in whose hand is Muhammad's soul, the sanctity of a believer is greater with Allah than yours: his wealth, his blood, and to think anything but good of him."</em> (Ibn Majah 3932)</p>
+    <p>Remember this in the crowd. Pushing someone to reach the Black Stone or to get closer to the wall trades something greater for something lesser.</p>
+    <h4>Details to look for</h4>
+    <ul>
+      <li><strong>The kiswah:</strong> the black silk cover, with Qur'anic verses woven in gold thread around its upper band. It is replaced every year.</li>
+      <li><strong>The door:</strong> on the east wall, raised above the ground, covered in gold. Its key is still held by the Banu Shaybah family.</li>
+      <li><strong>The Multazam:</strong> the stretch of wall between the Black Stone and the door, where companions pressed themselves and made du'a.</li>
+      <li><strong>The Mizab:</strong> the golden rain spout on the roof, draining into the Hijr Ismail.</li>
+      <li><strong>The two corners on Ibrahim's foundations:</strong> the Black Stone corner and the Yemeni corner. The other two follow the Quraysh rebuild, which left out the Hijr.</li>
+    </ul>
+    <h4>Ways to take it in</h4>
+    <ul>
+      <li><strong>Just sit and look.</strong> Looking is worship in itself, so give yourself time with no task: no tawaf, no reading, only looking, dhikr and du'a.</li>
+      <li><strong>Try different times and levels.</strong> After Fajr as the sky lightens, and late at night when the marble is cool and the crowd thins. From the upper floors and the roof you see the whole ring of tawaf moving at once.</li>
+      <li><strong>Pick a spot facing the Multazam or the door</strong> after a prayer, and stay a while.</li>
+      <li><strong>Limit photos.</strong> Take a few, then put the phone away. The image you keep in your heart matters more than the one in your camera roll.</li>
+      <li><strong>Think of everyone who faces it.</strong> At every moment, somewhere in the world, people are praying toward this exact spot. Make du'a for them, and for the people back home who asked you to remember them.</li>
+      <li><strong>Return to it on your last day.</strong> Look at it once more before your farewell tawaf, and ask Allah to bring you back.</li>
+    </ul>
+    <div class="live-it"><h5>When you're there</h5><ul>
+      <li>First sight: stop, raise your hands, ask before anything else.</li>
+      <li>During tawaf: remember the angels circling al-Bayt al-Ma'mur above you.</li>
+      <li>In the crowd: the believer next to you is more sacred than the wall.</li>
+      <li>Afterward: sit and simply look, as worship.</li>
+    </ul></div>` };
+
+const MORE = [
+  { title:'The Year of the Elephant', text:"Abraha, the Abyssinian governor of Yemen, marched on Makkah with an elephant to destroy the Kaaba. Abdul-Muttalib asked him only for his camels back: he owned the camels, and the House had its own Lord to protect it. Flocks of birds pelted the army with stones of baked clay (Surah al-Fil). The Prophet ﷺ was born that same year.", where:'Recite Surah al-Fil while looking at the Kaaba.' },
+  { title:'Hudaybiyyah and the origin of ramal', text:"In 6 AH the Prophet ﷺ set out with about 1,400 companions to perform umrah and was blocked at Hudaybiyyah. The treaty seemed humiliating, but the Qur'an called it a clear victory (Surah al-Fath). The next year they returned for 'Umrat al-Qada. The Quraysh had said Madinah's fever had weakened them, so the men bared their right shoulders (idtiba') and walked briskly (ramal) in the first three circuits to show strength. The Prophet ﷺ performed four umrahs in his lifetime.", where:{ f:"You'll see the men around you doing this in tawaf. Women walk normally.", m:"You'll do both yourself in the tawaf of your Umrah." } },
+  { title:'Umar and the Black Stone', text:"Umar (RA) kissed the Black Stone and said he knew it was only a stone that could neither harm nor benefit, and that he would not have kissed it had he not seen the Prophet ﷺ do so (Bukhari). Every ritual is about following the Prophet ﷺ and obeying Allah, not the objects themselves.", where:'If the crowd is heavy, pointing from a distance is fully sunnah.' },
+  { title:'The Conquest of Makkah', text:"In 8 AH the man who had been driven out of Makkah returned with 10,000 companions, head bowed so low it nearly touched his saddle. He circled the Kaaba and knocked down its 360 idols, reciting \"Truth has come and falsehood has vanished\" (17:81). He told the Quraysh who had persecuted him that they were free to go. Bilal, once tortured on Makkah's sands, climbed the Kaaba and gave the adhan. The Prophet ﷺ returned the Kaaba's key to Uthman ibn Talha's family, the Banu Shaybah, who still hold it today.", where:'Every adhan you hear in the Haram echoes that first one from the Kaaba.' },
+  { title:'The weeping tree trunk', text:"The Prophet ﷺ used to deliver sermons leaning against a palm trunk. When a wooden minbar was built, the trunk cried out like a child until he came down and embraced it (Bukhari). He ﷺ said the area between his house and his minbar is a garden from the gardens of Paradise.", where:'The pillar al-Hannanah marks the spot, by the Rawdah.' },
+  { title:'The change of qibla', text:"For about 16 to 17 months in Madinah, Muslims prayed toward Jerusalem. During a prayer, revelation came commanding them to turn toward the Kaaba (2:144), and the congregation turned mid-prayer.", where:'Masjid al-Qiblatayn, "the mosque of the two qiblas," in Madinah.' },
+  { title:'Uhud', text:"At Uhud, the archers left their post on a small hill against orders, and the battle turned. Hamza, the Prophet's beloved uncle, was martyred, and the Prophet ﷺ was wounded. The lessons are obedience, and the cost of chasing worldly gain. He ﷺ said of the mountain: Uhud loves us and we love it.", where:"Stand on the Archers' Hill and greet the martyrs, including Hamza." },
+  { title:"Al-Baqi'", text:"This cemetery beside Masjid an-Nabawi holds thousands of companions, many of the Prophet's family, and Uthman (RA). The Prophet ﷺ would visit it at night to make du'a for its people.", where:"Beside Masjid an-Nabawi." },
+  { title:'The Farewell Hajj', text:"At Arafah, months before his death, the Prophet ﷺ declared the sanctity of life, wealth and honor, the equality of all people regardless of race, the rights of women, and the abolition of usury and blood feuds. He asked whether he had conveyed the message; when they said yes, he called on Allah to bear witness.", where:"Not part of Umrah, but it's the best summary of what this land stands for." },
+];
+
+const TAKEAWAYS = [
+  "During sa'ee, think of Hajar and her trust in Allah, and bring your own worries with you.",
+  "Drinking Zamzam is a moment for intention and du'a.",
+  "Behind the Maqam, remember Ibrahim building and asking for acceptance.",
+  "In Madinah, make wudu at the hotel before going to Quba.",
+];
+
+// Fields may be a plain value, or { m: …, f: … } for gender-specific content. `only` limits a step to one gender.
+const STEPS = [
+  { id:'i1', section:'ihram',
+    text:'Take a full bath (ghusl) with the intention of Ihram.',
+    note:'If unable, wudu is sufficient.',
+    detail:{ tips:{
+      f:['Trim nails and remove unwanted hair now — not allowed once in Ihram.','You may put perfume on your body before Ihram, but not on your clothes. If the scent lingers afterward, that is fine.'],
+      m:['Trim nails and moustache and remove underarm and pubic hair now — not allowed once in Ihram.','You may put perfume on your body before Ihram, but not on the Ihram sheets. If the scent lingers afterward, that is fine.'] } }
+  },
+  { id:'i2', section:'ihram', only:'f',
+    text:"Dress modestly. Your regular abaya and hijab are your Ihram — no special garment for women.",
+    note:'Cover everything except your face and hands. In the Hanafi school, socks and gloves are allowed. Do not let any cloth touch your face while in Ihram.',
+    detail:{ tips:['Do not cut or trim hair or nails while in Ihram.','Do not apply perfume or scented products, including scented soap, lotion or wipes.','Your face must not be covered by anything that touches it. To screen your face from men, Hanafi scholars recommend something held away from the skin, such as a visor-style cap under the hijab with a cloth hanging over the brim.','Stitched clothing, shoes, socks and gloves are all fine for women.','Avoid intimacy with your husband.','All restrictions lift once you trim your hair at the end.'] }
+  },
+  { id:'i2m', section:'ihram', only:'m',
+    text:"Put on the two white sheets of Ihram: the izar wrapped around your waist, and the rida over both shoulders.",
+    note:'Nothing stitched or shaped to the body: no shirt, trousers, underwear, socks or cap. Keep your head and face uncovered the whole time you are in Ihram.',
+    detail:{ tips:['Footwear must leave the raised bone on top of the foot (mid-foot) uncovered. Simple sandals or flip-flops are safest.','A belt, money pouch, watch, glasses, ring and umbrella are all fine.','Do not cut or trim hair or nails while in Ihram.','Do not apply perfume or scented products, including scented soap, lotion or wipes.','Do not cover your head or face, even with a towel while sleeping.','Avoid intimacy with your wife.','All restrictions lift once you shave or trim your head at the end.'] }
+  },
+  { id:'i3', section:'ihram',
+    text:"Pray 2 rak'ahs with the intention of Ihram, if it is not a disliked time.",
+    note:{ f:"Recite Surah Al-Kafirun in the 1st rak'ah and Surah Al-Ikhlas in the 2nd.", m:"Recite Surah Al-Kafirun in the 1st rak'ah and Surah Al-Ikhlas in the 2nd. Keep both shoulders covered with the rida for this prayer." },
+    detail:{ tips:['This prayer is sunnah in the Hanafi school, not required.','Disliked times: from Fajr until about 15 minutes after sunrise, from Asr until sunset, and the few minutes when the sun is at its peak. At those times, skip the prayer and go straight to your intention.'] }
+  },
+  { id:'i4', section:'ihram',
+    text:'At the Miqat — or just before the plane crosses it — make your intention for Umrah, then say the Talbiyah straight away (next step).',
+    dua:{ arabic:'اللّٰهُمَّ إِنِّي أُرِيدُ الْعُمْرَةَ فَيَسِّرْهَا لِي وَتَقَبَّلْهَا مِنِّي', roman:"Allāhumma innī urīdul-'umrata fa-yassirhā lī wa taqabbalhā minnī", meaning:'O Allah, I intend Umrah, so make it easy for me and accept it from me.' },
+    note:'In the Hanafi school, you enter Ihram only when the intention is joined with the Talbiyah. The intention alone is not enough.',
+    detail:{ tips:['The Miqat are fixed boundaries set by the Prophet ﷺ. No one intending Umrah may cross without entering Ihram.','If flying, the airline or group leader will announce when you are approaching the Miqat.'] }
+  },
+  { id:'i5', section:'ihram',
+    text:{ f:'Say the Talbiyah right after your intention. Saying it at least once is required to enter Ihram. Women say it quietly. Keep repeating it often until you begin Tawaf.',
+           m:'Say the Talbiyah right after your intention. Saying it at least once is required to enter Ihram. Men say it aloud, in a moderate voice. Keep repeating it often until you begin Tawaf.' },
+    dua:{ arabic:'لَبَّيْكَ اللّٰهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لَا شَرِيكَ لَكَ', roman:'Labbayk Allāhumma labbayk. Labbayk lā sharīka laka labbayk. Innal-ḥamda wan-niʿmata laka wal-mulk. Lā sharīka lak.', meaning:'Here I am, O Allah, here I am. You have no partner. All praise, grace, and sovereignty belong to You. You have no partner.' },
+    detail:{ history:"The Talbiyah is the pilgrim's call. You are answering Allah's invitation, just as Ibrahim (AS) once called all of humanity to this House and they answered across time." }
+  },
+  { id:'t1', section:'tawaf',
+    text:'Make sure you have wudu. Enter Masjid Al-Haram with your right foot and say:',
+    note:'In the Hanafi school, wudu is wajib for Tawaf. A Tawaf done without it carries a penalty unless it is repeated with wudu.',
+    dua:{ arabic:'اللّٰهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ', roman:'Allāhummaf-taḥ lī abwāba raḥmatik', meaning:'O Allah, open for me the gates of Your mercy.' }
+  },
+  { id:'t2', section:'tawaf',
+    text:"When the Ka'bah comes into view for the first time — stop. Raise your hands and make dua. This is one of the most powerful moments of the entire Umrah.",
+    note:{ f:"No fixed dua here. Scholars say dua is accepted at first sight of the Ka'bah. Speak freely — for yourself, your husband, your children, your parents. Take your time.",
+           m:"No fixed dua here. Scholars say dua is accepted at first sight of the Ka'bah. Speak freely — for yourself, your wife, your children, your parents. Take your time." },
+    detail:{ history:"This is the House of Allah — the direction every Muslim on earth faces five times a day. Seeing it for the first time is a gift very few people receive. Before anything else, ask.", tips:['Above it, in the seventh heaven, 70,000 angels a day worship at al-Bayt al-Ma\'mur. Your tawaf mirrors theirs.','Don\'t reach for your phone first. Make the du\'a, then take a photo if you like.','See "Looking at the Ka\'bah" at the top of the Pre-read tab for more to reflect on.'] }
+  },
+  { id:'t2m', section:'tawaf', only:'m',
+    text:"Before you begin, uncover your right shoulder (idtiba'): pass the rida under your right armpit and throw its end over your left shoulder. Keep it this way for all 7 circuits.",
+    note:"Idtiba' is sunnah for men only, and only in a Tawaf that is followed by Sa'ee, like this one. Cover the shoulder again once Tawaf is done.",
+    detail:{ history:"The Prophet ﷺ and his companions did this in the Umrah of Qada (7 AH), together with raml, to show the Quraysh they were strong and not weakened by Madinah's fever." }
+  },
+  { id:'t3', section:'tawaf',
+    text:"Walk to the Black Stone corner (Hajar Al-Aswad). Make your niyyah in your heart: 'I intend to perform Tawaf of the Ka'bah for Umrah.'",
+    note:'Stand slightly to the right of the Black Stone (on the Yemeni Corner side), so your whole body passes it as you begin. A green light on the wall opposite marks its line.',
+    detail:{ history:'The Black Stone marks where each circuit begins and ends. The Prophet ﷺ kissed it. It is not worshipped — it is a marker and a physical connection to the time of Ibrahim (AS).' }
+  },
+  { id:'t4', section:'tawaf',
+    text:'Stop reciting the Talbiyah now. Face the Black Stone and raise both hands to your ears, palms facing it, as in the opening takbir of prayer, and say the dua. Then lower your hands, point both palms toward the Stone, and kiss your palms. This begins circuit 1.',
+    dua:{ arabic:'بِسْمِ اللّٰهِ، اللّٰهُ أَكْبَرُ، وَلِلّٰهِ الْحَمْدُ', roman:'Bismillāhi Allāhu Akbar, wa lillāhil-ḥamd', meaning:'In the name of Allah, Allah is the Greatest, and all praise is for Allah.' },
+    note:'Kiss or touch the Black Stone only if you can reach it without pushing. If crowded, pointing from where you stand is perfectly valid.'
+  },
+  { id:'t5', section:'tawaf', isCounter:true, counterKey:'tawaf',
+    text:{
+      f:"Walk counter-clockwise, Ka'bah on your LEFT.\n\n● Yemeni Corner (last corner before the Black Stone): touch with your right hand if possible — no dua. If crowded, walk past.\n\n● Between the Yemeni Corner and the Black Stone: recite the dua below — every circuit, all 7 times.\n\n● Back at the Black Stone = 1 circuit done. Face it, point your palms toward it, say Bismillāhi Allāhu Akbar, kiss your palms (no need to raise them to your ears again), and tap the counter.",
+      m:"Walk counter-clockwise, Ka'bah on your LEFT.\n\n● Circuits 1–3: walk briskly with short steps, shoulders moving (raml). Circuits 4–7: walk normally.\n\n● Yemeni Corner (last corner before the Black Stone): touch with your right hand if possible — no dua. If crowded, walk past.\n\n● Between the Yemeni Corner and the Black Stone: recite the dua below — every circuit, all 7 times.\n\n● Back at the Black Stone = 1 circuit done. Face it, point your palms toward it, say Bismillāhi Allāhu Akbar, kiss your palms (no need to raise them to your ears again), and tap the counter." },
+    dua:{ arabic:'رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ', roman:'Rabbanā ātinā fid-dunyā ḥasanatan wa fil-ākhirati ḥasanatan wa qinā \'adhāban-nār', meaning:'Our Lord, give us good in this world, good in the Hereafter, and protect us from the Fire.' },
+    note:'For the rest of each circuit, no fixed dua — speak to Allah freely in any language. If you lose count, take the lower number you are sure of.',
+    detail:{ tips:{
+      f:['The Yemeni Corner is the 4th and final corner before the Black Stone.','A green light on the wall marks the Black Stone line.','Go around the outside of the Hijr Ismail (the low semicircular wall). It is part of the Ka\'bah.','In the Hanafi school, the first 4 circuits are the pillar of Tawaf and the last 3 are wajib. Complete all 7.','After the 7th circuit, face the Black Stone and point your palms toward it once more before leaving the mataf.','If your wudu breaks mid-Tawaf: leave, renew wudu, return and continue from where you left off — you do not restart from circuit 1.','If the congregational prayer starts, join it, then continue from the same spot.','Women walk at a normal pace in every circuit and keep the shoulders covered.','Stay calm and move with the flow of people.'],
+      m:['The Yemeni Corner is the 4th and final corner before the Black Stone.','A green light on the wall marks the Black Stone line.','Go around the outside of the Hijr Ismail (the low semicircular wall). It is part of the Ka\'bah.','In the Hanafi school, the first 4 circuits are the pillar of Tawaf and the last 3 are wajib. Complete all 7.','Raml is sunnah, not required. If the crowd is too dense to do it without pushing, walk normally. Moving further out from the Ka\'bah can give you room.','After the 7th circuit, face the Black Stone and point your palms toward it once more before leaving the mataf.','If your wudu breaks mid-Tawaf: leave, renew wudu, return and continue from where you left off — you do not restart from circuit 1.','If the congregational prayer starts, join it, then continue from the same spot. Cover your shoulder for the prayer.','Stay calm and move with the flow of people.'] } }
+  },
+  { id:'t6', section:'tawaf',
+    text:'After all 7 circuits, pray 2 rak\'ahs near Maqam Ibrahim. If you cannot get close, anywhere in the Masjid is fine. In the Hanafi school these 2 rak\'ahs are wajib.',
+    notes:{
+      f:["Recite Surah Al-Kafirun in the 1st rak'ah and Surah Al-Ikhlas in the 2nd.","Don't pray them in a disliked time. If you finish Tawaf after Fajr time has begun, pray them after sunrise (about 15 minutes after); if after Asr, pray them after Maghrib."],
+      m:["Cover your right shoulder again before you pray. Idtiba' ends with Tawaf.","Recite Surah Al-Kafirun in the 1st rak'ah and Surah Al-Ikhlas in the 2nd.","Don't pray them in a disliked time. If you finish Tawaf after Fajr time has begun, pray them after sunrise (about 15 minutes after); if after Asr, pray them after Maghrib."] },
+    detail:{ history:"Maqam Ibrahim is the stone on which Ibrahim (AS) stood while building the Ka'bah. Allah commanded: 'Take the station of Ibrahim as a place of prayer.' (Quran 2:125)" }
+  },
+  { id:'t7', section:'tawaf',
+    text:'Drink Zamzam water. Face the Qiblah, standing, and drink in 3 sips, pausing to breathe between them. Before you drink, make dua — the Prophet ﷺ said Zamzam is for whatever it is drunk for. You may recite this dua, then ask Allah for whatever is in your heart:',
+    dua:{ arabic:'اللّٰهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا وَرِزْقًا وَاسِعًا وَشِفَاءً مِنْ كُلِّ دَاءٍ', roman:"Allāhumma innī as'aluka 'ilman nāfi'an wa rizqan wāsi'an wa shifā'an min kulli dā'", meaning:'O Allah, I ask You for beneficial knowledge, abundant provision, and cure from every illness.' },
+    note:'After this dua, ask for anything on your heart — your children, your family, your health, your deen. The personal dua here is what matters most.',
+    detail:{ history:"Zamzam has flowed continuously since Allah caused it to spring from the earth for baby Ismail (AS) when his mother Hajar desperately searched for water. It has never dried up in thousands of years. The Prophet ﷺ said: 'The best water on the face of the earth is Zamzam.' (Tabarani)", tips:['Before heading to Safa, it is sunnah to go back to the Black Stone line and point your palms toward it once more, if it is easy.'] }
+  },
+  { id:'s1', section:'saee',
+    text:'Walk toward the Safa hill inside the Mas\'aa gallery. As you approach Safa for the first time, recite this verse — once only:',
+    dua:{ arabic:'إِنَّ الصَّفَا وَالْمَرْوَةَ مِنْ شَعَائِرِ اللّٰهِ', roman:"Innaṣ-ṣafā wal-marwata min sha'ā'irillāh", meaning:'Indeed Safa and Marwa are among the rites of Allah. (Quran 2:158)' },
+    note:'Recite this only the first time approaching Safa — not on return laps.',
+    detail:{ history:"When the Prophet ﷺ approached Safa he recited this verse then said: 'We begin with what Allah began with.' (Sahih Muslim)" }
+  },
+  { id:'s2', section:'saee',
+    text:'Climb Safa. Face the Ka\'bah direction, raise your hands, and recite this dua 3 times. Between each repetition, lower your hands and make personal dua silently.',
+    dua:{ arabic:'اللّٰهُ أَكْبَرُ، اللّٰهُ أَكْبَرُ، اللّٰهُ أَكْبَرُ — لَا إِلَٰهَ إِلَّا اللّٰهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ. لَا إِلَٰهَ إِلَّا اللّٰهُ وَحْدَهُ، أَنجَزَ وَعْدَهُ وَنَصَرَ عَبْدَهُ وَهَزَمَ الْأَحْزَابَ وَحْدَهُ', roman:'Allāhu Akbar, Allāhu Akbar, Allāhu Akbar — Lā ilāha illallāhu waḥdahu lā sharīka lah, lahul-mulku wa lahul-ḥamdu wa huwa \'alā kulli shay\'in qadīr. Lā ilāha illallāhu waḥdah, anjaza wa\'dahu wa naṣara \'abdahu wa hazamal-aḥzāba waḥdah.', meaning:'Allah is the Greatest (×3). There is no god but Allah alone, no partner has He. To Him belongs the kingdom and all praise, and He has power over all things. There is no god but Allah alone — He fulfilled His promise, gave victory to His servant, and defeated the confederates alone.' },
+    note:'Sequence: dua → personal dua → dua → personal dua → dua (3 times total). Repeat this same dua at Marwa on every lap. Take your time — this is a major dua opportunity.',
+    detail:{ history:'This is the exact dua the Prophet ﷺ made on Safa, narrated in Sahih Muslim (1218). He began with Allahu Akbar three times, said the dhikr, then made personal dua between each repetition. You are retracing his footsteps.' }
+  },
+  { id:'s3', section:'saee', isCounter:true, counterKey:'saee',
+    text:{
+      f:"Walk from Safa to Marwa — lap 1. Walk at your own pace the entire way.\n\nAt Marwa: climb, face the Ka'bah, and repeat the same dua 3 times with personal dua in between.\n\nWalk back to Safa — lap 2. Continue until lap 7, which ends on Marwa.",
+      m:"Walk from Safa to Marwa — lap 1. Between the two green lights on the walls, jog at a moderate pace; walk normally the rest of the way. Do this in every lap.\n\nAt Marwa: climb, face the Ka'bah, and repeat the same dua 3 times with personal dua in between.\n\nWalk back to Safa — lap 2. Continue until lap 7, which ends on Marwa." },
+    notes:['Safa → Marwa = lap 1. Marwa → Safa = lap 2. You finish on Marwa at lap 7.','Tap the counter each time you arrive at a hill after walking — not at Safa at the very start.'],
+    detail:{ history:"Sa'ee commemorates Hajar (AS), wife of Ibrahim (AS), who ran between these hills searching for water for her infant son Ismail. Her trust in Allah caused the Zamzam spring to burst from the earth. Every step honours her faith.", tips:{
+      f:['In the Hanafi school, Sa\'ee is wajib rather than a pillar, and starting at Safa is required. All 7 laps must be done.','Wudu is recommended for Sa\'ee but not required.','If the congregational prayer starts, join it, then continue the lap from where you stopped.','Between the hills: no fixed dua — make sincere personal dua the whole way.','Women walk at a normal pace the entire Sa\'ee, including between the green lights.'],
+      m:['In the Hanafi school, Sa\'ee is wajib rather than a pillar, and starting at Safa is required. All 7 laps must be done.','Wudu is recommended for Sa\'ee but not required.','If the congregational prayer starts, join it, then continue the lap from where you stopped.','Between the hills: no fixed dua — make sincere personal dua the whole way.','The green-lit stretch marks the valley floor where Hajar ran. Jogging there is sunnah for men only.','Keep both shoulders covered. Idtiba\' was only for Tawaf.'] } }
+  },
+  { id:'c1', section:'completion', only:'f',
+    text:"Trim about a fingertip's length (roughly 1 inch / 2.5 cm) from the ends of at least a quarter of your hair. Trimming from all of it is better. This can be done under your hijab — it does not need to be visible.",
+    note:'In the Hanafi school, the trim is wajib and must be done inside the Haram boundary. Your Makkah hotel counts. Once done, all Ihram restrictions are lifted.',
+    detail:{ tips:['A few strands from the hairline is not enough in the Hanafi school. An easy way: gather all your hair (or a braid) together and cut the ends.','You can trim your own hair once Sa\'ee is done, or your husband can do it after he has finished his own.','Shaving is for men only. Women always trim.'] }
+  },
+  { id:'c1m', section:'completion', only:'m',
+    text:"Shave your whole head, or trim. Shaving is better: the Prophet ﷺ prayed three times for those who shave before including those who trim.",
+    note:'In the Hanafi school, shaving or trimming is wajib, must cover at least a quarter of the head, and must be done inside the Haram boundary. Once done, all Ihram restrictions are lifted.',
+    detail:{ tips:['To trim instead, cut about a fingertip\'s length (roughly 1 inch / 2.5 cm) from at least a quarter of your head. Doing the whole head is better.','If your hair is already shorter than a fingertip\'s length, trimming isn\'t possible, so you must shave.','Barbershops line the exits near Marwah and the clock tower. Expect a queue right after Fajr.','Once your own Sa\'ee is done, you may trim your wife\'s hair for her.'] }
+  },
+  { id:'c2', section:'completion',
+    text:'Your Umrah is complete. Ask Allah to accept it:',
+    dua:{ arabic:'اللّٰهُمَّ تَقَبَّلْ مِنِّي إِنَّكَ أَنْتَ السَّمِيعُ الْعَلِيمُ', roman:"Allāhumma taqabbal minnī innaka antas-samī'ul-'alīm", meaning:'O Allah, accept from me. Indeed You are the All-Hearing, All-Knowing.' },
+    note:{ f:"You may also say مِنَّا (minnā — 'from us') to include your husband and family. It echoes the du'a Ibrahim and Ismail made while building the Ka'bah.",
+           m:"You may also say مِنَّا (minnā — 'from us') to include your wife and family. It echoes the du'a Ibrahim and Ismail made while building the Ka'bah." }
+  },
+];
+
+
+// ── Icons ─────────────────────────────────────────────────────────────────────
+const svg = (d, extra='') => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ${extra}>${d}</svg>`;
+const ICON = {
+  preread: svg('<path d="M3 5.5A1.5 1.5 0 0 1 4.5 4H10a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H3z"/><path d="M21 5.5A1.5 1.5 0 0 0 19.5 4H14a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h7z"/>'),
+  ihram: svg('<path d="M5 20c0-9 6-15 15-16-.5 9-6.5 15-15 16z"/><path d="M5 20l8-8"/>'),
+  tawaf: svg('<rect x="9" y="9" width="6" height="6" rx="1"/><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3"/><path d="M17.8 3.5v3.3h-3.3"/>'),
+  saee: svg('<path d="M4 8h14"/><path d="M15 5l3 3-3 3"/><path d="M20 16H6"/><path d="M9 13l-3 3 3 3"/>'),
+  completion: svg('<circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5.5"/>'),
+  check: svg('<path d="M5 12.5l4.5 4.5L19 7.5"/>', 'stroke-width="2.6"'),
+  info: svg('<circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.6v.1"/>', 'stroke-width="2"'),
+  chev: svg('<path d="M9 6l6 6-6 6"/>', 'class="chev" stroke-width="2.2"'),
+  chevS: svg('<path d="M9 6l6 6-6 6"/>', 'stroke-width="2.4"'),
+  arrow: svg('<path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>', 'stroke-width="2"'),
+  pin: svg('<path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>'),
+  kaaba: svg('<path d="M4 7l8-3 8 3v10l-8 3-8-3z"/><path d="M4 7l8 3 8-3"/><path d="M12 10v10"/><path d="M4 10.5l8 3 8-3"/>'),
+};
+const esc = t => String(t);
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let activeSection = 'preread';
+let openStory = null;
+let checked  = {};
+let counters = { tawaf: 0, saee: 0 };
+// Progress is saved on this phone after every change, so a reload or a locked screen never loses your place.
+try {
+  const pr = JSON.parse(localStorage.getItem('labbayk-progress') || 'null');
+  if (pr && typeof pr === 'object') {
+    if (pr.checked && typeof pr.checked === 'object') checked = pr.checked;
+    if (pr.counters) counters = { tawaf: Math.min(7, +pr.counters.tawaf || 0), saee: Math.min(7, +pr.counters.saee || 0) };
+  }
+} catch (e) {}
+const SIZES = [1, 1.15, 1.3];
+let textSize = 0;
+try { const ts = +localStorage.getItem('labbayk-size'); if (ts >= 0 && ts < SIZES.length) textSize = ts; } catch (e) {}
+let gender = 'f';
+let readStories = {};
+try { const gv = localStorage.getItem('labbayk-gender'); if (gv === 'm' || gv === 'f') gender = gv; } catch (e) {}
+try { readStories = JSON.parse(localStorage.getItem('labbayk-preread') || '{}') || {}; } catch (e) { readStories = {}; }
+try { const t = localStorage.getItem('labbayk-tab'); if (t && SECTIONS.some(s => s.key === t)) activeSection = t; } catch (e) {}
+const store = (k, v) => { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } };
+let saveOk = true;
+function saveProgress() { saveOk = store('labbayk-progress', JSON.stringify({ checked, counters, savedAt: Date.now() })); }
+function hasProgress() { return Object.values(checked).some(Boolean) || counters.tawaf > 0 || counters.saee > 0; }
+
+// Pick the gender-specific value of a field, if it has one.
+function g(v) { return (v && typeof v === 'object' && !Array.isArray(v) && ('m' in v || 'f' in v)) ? v[gender] : v; }
+function stepsFor(sec) { return STEPS.filter(s => (!sec || s.section === sec) && (!s.only || s.only === gender)); }
+function isDone(s) { return s.isCounter ? counters[s.counterKey] >= 7 : !!checked[s.id]; }
+
+function sectionDone(key) {
+  if (key === 'preread') return STORIES.every(s => readStories[s.id]);
+  return stepsFor(key).every(isDone);
+}
+function totalProgress() {
+  const all = stepsFor().filter(s => s.section !== 'preread');
+  const done = all.filter(isDone).length;
+  return { done, total: all.length, pct: Math.round(done / all.length * 100) };
+}
+function currentStep() { return stepsFor().find(s => !isDone(s)) || null; }
+function scrollToStep(id, smooth) {
+  const el = document.getElementById('step-' + id);
+  if (el) el.scrollIntoView({ block: 'start', behavior: smooth ? 'smooth' : 'auto' });
+}
+// Toggle a step, then glide to the next one if it is in the same section.
+function toggleStep(step) {
+  checked[step.id] = !checked[step.id];
+  render();
+  if (checked[step.id]) { const cur = currentStep(); if (cur && cur.section === activeSection) scrollToStep(cur.id, true); }
+}
+function resumeCurrent() { const cur = currentStep(); if (!cur) return; activeSection = cur.section; store('labbayk-tab', cur.section); render(); scrollToStep(cur.id, false); }
+function stepNum(id) { return stepsFor().filter(s => !s.isCounter).findIndex(s => s.id === id) + 1; }
+
+function goTo(key, storyId) {
+  activeSection = key; store('labbayk-tab', key);
+  if (storyId) openStory = storyId;
+  render(); window.scrollTo(0, 0);
+}
+
+// Keep the screen awake while counting circuits and laps.
+let wakeLock = null;
+async function keepAwake() {
+  try { if (!wakeLock && navigator.wakeLock) { wakeLock = await navigator.wakeLock.request('screen'); wakeLock.addEventListener('release', () => { wakeLock = null; }); } } catch (e) {}
+}
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && (counters.tawaf || counters.saee)) keepAwake(); });
+function buzz() { try { navigator.vibrate && navigator.vibrate(25); } catch (e) {} }
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function render() {
+  saveProgress();
+  document.documentElement.style.setProperty('--zoom', SIZES[textSize]);
+  document.querySelectorAll('#aa .lvl i').forEach((i, k) => i.classList.toggle('on', k <= textSize));
+  document.getElementById('aa').setAttribute('aria-label', 'Text size: ' + ['normal', 'large', 'extra large'][textSize] + '. Tap to change.');
+  document.querySelectorAll('#gender button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.g === gender)));
+  const { pct } = totalProgress();
+  document.getElementById('fill').style.width = pct + '%';
+  document.getElementById('pct').textContent = pct + '% done';
+  renderTabs(); renderHeading();
+  if (activeSection === 'preread') renderPreread(); else renderSteps();
+  renderResume();
+}
+
+// When you're on a different tab from where you left off, offer a one-tap way back.
+function renderResume() {
+  const cur = currentStep();
+  if (!cur || !hasProgress() || cur.section === activeSection) return;
+  const sec = SECTIONS.find(s => s.key === cur.section);
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'resume';
+  const label = cur.isCounter ? (cur.counterKey === 'tawaf' ? `Circuit ${counters.tawaf + 1} of 7` : `Lap ${counters.saee + 1} of 7`) : `Step ${stepNum(cur.id)}`;
+  b.innerHTML = `<span><small>Continue where you left off</small><b>${sec.label} · ${label}</b></span>${ICON.arrow}`;
+  b.onclick = resumeCurrent;
+  const c = document.getElementById('content');
+  c.insertBefore(b, c.firstChild);
+}
+
+function renderTabs() {
+  const el = document.getElementById('tabs');
+  el.innerHTML = '';
+  SECTIONS.forEach(sec => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'tab' + (sec.key === activeSection ? ' active' : '');
+    if (sec.key === activeSection) b.setAttribute('aria-current', 'page');
+    b.innerHTML = ICON[sec.key] + `<span>${sec.label}</span>` + (sectionDone(sec.key) ? '<i class="dot" aria-label="done"></i>' : '');
+    b.onclick = () => goTo(sec.key);
+    el.appendChild(b);
+  });
+}
+
+function renderHeading() {
+  const sec = SECTIONS.find(s => s.key === activeSection);
+  const rites = SECTIONS.filter(s => s.key !== 'preread');
+  const idx = rites.findIndex(s => s.key === activeSection);
+  document.getElementById('eyebrow').textContent = activeSection === 'preread' ? 'Before you go' : `Part ${idx + 1} of ${rites.length}`;
+  document.getElementById('title').textContent = sec.key === 'completion' ? 'Finish' : sec.label;
+  document.getElementById('sub').textContent = sec.sub;
+  const pill = document.getElementById('count');
+  if (activeSection === 'preread') {
+    const n = STORIES.filter(s => readStories[s.id]).length;
+    pill.textContent = n + ' of ' + STORIES.length + ' read';
+    pill.className = 'pill' + (n === STORIES.length ? ' ok' : '');
+  } else {
+    const v = stepsFor(activeSection);
+    const d = v.filter(isDone).length;
+    pill.textContent = d + ' of ' + v.length + ' done';
+    pill.className = 'pill' + (d === v.length ? ' ok' : '');
+  }
+}
+
+function nextButton(container, label, ready, onclick) {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'next' + (ready ? ' ready' : '');
+  b.innerHTML = `<span><small>${ready ? 'Next' : 'Skip to'}</small>${label}</span>${ICON.arrow}`;
+  b.onclick = onclick;
+  container.appendChild(b);
+}
+
+function renderSteps() {
+  const c = document.getElementById('content');
+  c.innerHTML = '';
+  const ol = document.createElement('ol');
+  ol.className = 'timeline';
+  const cur = currentStep();
+  const hasProgressOrStarted = hasProgress() || activeSection !== 'preread';
+
+  stepsFor(activeSection).forEach(step => {
+    const done = isDone(step);
+    const li = document.createElement('li');
+    const isCur = cur && cur.id === step.id && hasProgressOrStarted;
+    li.className = 'step' + (done ? ' done' : '') + (isCur ? ' current' : '');
+    li.id = 'step-' + step.id;
+
+    const node = document.createElement('button');
+    node.type = 'button';
+    if (step.isCounter) {
+      node.className = 'node count';
+      node.innerHTML = done ? ICON.check : '7';
+      node.tabIndex = -1;
+      node.setAttribute('aria-hidden', 'true');
+    } else {
+      node.className = 'node';
+      node.innerHTML = done ? ICON.check : stepNum(step.id);
+      node.setAttribute('aria-label', done ? 'Mark step as not done' : 'Mark step as done');
+      node.onclick = () => toggleStep(step);
+    }
+    li.appendChild(node);
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    if (isCur) { const t = document.createElement('span'); t.className = 'now-tag'; t.textContent = 'You are here'; card.appendChild(t); }
+    const p = document.createElement('p');
+    p.className = 'step-text';
+    p.textContent = g(step.text);
+    card.appendChild(p);
+
+    if (step.note) card.appendChild(makeNote(g(step.note)));
+    if (step.notes) g(step.notes).forEach(n => card.appendChild(makeNote(n)));
+    if (step.dua) card.appendChild(makeDua(step.dua));
+    if (step.isCounter) card.appendChild(makeCounter(step));
+    if (step.detail) card.appendChild(makeMore(step.detail));
+
+    if (!step.isCounter) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'btn' + (done ? ' ghost' : '');
+      b.innerHTML = done ? `${ICON.check}<span>Done · tap to undo</span>` : `${ICON.check}<span>Mark as done</span>`;
+      b.onclick = () => toggleStep(step);
+      card.appendChild(b);
+    }
+    li.appendChild(card);
+    ol.appendChild(li);
+  });
+  c.appendChild(ol);
+
+  const i = SECTIONS.findIndex(s => s.key === activeSection);
+  if (i < SECTIONS.length - 1) {
+    const nx = SECTIONS[i + 1];
+    nextButton(c, nx.label, sectionDone(activeSection), () => goTo(nx.key));
+  }
+
+  const prog = totalProgress();
+  if (prog.done === prog.total) {
+    const card = document.createElement('div');
+    card.className = 'complete-card';
+    card.innerHTML = `
+      <p class="ar" lang="ar">${gender === 'm' ? 'تَقَبَّلَ اللّٰهُ مِنْكَ' : 'تَقَبَّلَ اللّٰهُ مِنْكِ'}</p>
+      <p class="rom">${gender === 'm' ? 'Taqabbalallāhu minka' : 'Taqabbalallāhu minki'}</p>
+      <p>May Allah accept your Umrah.</p>`;
+    c.appendChild(card);
+  }
+
+  const note = document.createElement('p');
+  note.className = 'saved';
+  note.textContent = saveOk ? 'Your progress is saved on this phone.' : 'This browser is blocking storage, so progress resets if the page reloads.';
+  c.appendChild(note);
+
+  if (activeSection === 'completion') {
+    const row = document.createElement('div');
+    row.className = 'reset-row';
+    row.innerHTML = `<p>Doing another Umrah? Clear every tick and counter and start again from Ihram.</p>`;
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'btn danger';
+    b.textContent = 'Start a new Umrah';
+    b.onclick = () => {
+      if (!b.dataset.armed) { b.dataset.armed = '1'; b.textContent = 'Tap again to clear everything'; setTimeout(() => { if (b.isConnected) { delete b.dataset.armed; b.textContent = 'Start a new Umrah'; } }, 4000); return; }
+      checked = {}; counters = { tawaf: 0, saee: 0 }; goTo('ihram');
+    };
+    row.appendChild(b);
+    c.appendChild(row);
+  }
+}
+
+function makeNote(text) {
+  const d = document.createElement('div');
+  d.className = 'note';
+  d.innerHTML = `${ICON.info}<p>${text}</p>`;
+  return d;
+}
+
+function makeDua(dua) {
+  const d = document.createElement('div');
+  d.className = 'dua-box';
+  d.innerHTML = `<p class="dua-arabic" lang="ar">${dua.arabic}</p><p class="dua-roman">${dua.roman}</p><p class="dua-meaning">${dua.meaning}</p>`;
+  return d;
+}
+
+function makeMore(detail) {
+  const d = document.createElement('details');
+  d.className = 'more';
+  let body = '';
+  if (detail.history) body += `<p class="hist">${detail.history}</p>`;
+  const tips = g(detail.tips);
+  if (tips && tips.length) body += `<ul>${tips.map(t => `<li>${t}</li>`).join('')}</ul>`;
+  d.innerHTML = `<summary>${ICON.chevS}<span>Learn more</span></summary><div class="more-body">${body}</div>`;
+  d.addEventListener('toggle', () => { d.querySelector('summary span').textContent = d.open ? 'Hide details' : 'Learn more'; });
+  return d;
+}
+
+function makeCounter(step) {
+  const key = step.counterKey, n = counters[key], total = 7, done = n >= total;
+  const unit = key === 'tawaf' ? 'circuit' : 'lap';
+  const r = 52, C = 2 * Math.PI * r, gap = 15, seg = C / total - gap;
+  let rings = '';
+  for (let i = 0; i < total; i++) {
+    const off = -(i * C / total);
+    rings += `<circle cx="60" cy="60" r="${r}" fill="none" stroke-width="9" stroke-linecap="round" class="${i < n ? 'seg-on' : 'seg-bg'}" stroke-dasharray="${seg} ${C - seg}" stroke-dashoffset="${off}"/>`;
+  }
+  const d = document.createElement('div');
+  d.className = 'counter' + (done ? ' complete' : '');
+  d.innerHTML = `
+    <div class="ring" role="img" aria-label="${n} of ${total} ${unit}s complete">
+      <svg viewBox="0 0 120 120">${rings}</svg>
+      <div class="ring-center"><b>${n}</b><span>of ${total} ${unit}s</span></div>
+    </div>
+    <p class="counter-label">${key === 'tawaf' ? "Circuits around the Ka'bah" : 'Laps between Safa and Marwa'}</p>
+    <div class="counter-btns">
+      <button type="button" class="minus" aria-label="Undo last ${unit}" ${n === 0 ? 'disabled' : ''}>−</button>
+      <button type="button" class="add">${done ? 'Complete' : `Complete ${unit} ${n + 1}`}</button>
+    </div>
+    ${done ? '<p class="alh" lang="ar">الحمد لله</p>' : ''}`;
+  d.querySelector('.minus').onclick = () => { if (counters[key] > 0) { counters[key]--; render(); } };
+  d.querySelector('.add').onclick = () => { if (counters[key] < total) { counters[key]++; buzz(); keepAwake(); render(); if (counters[key] >= total) { const cur = currentStep(); if (cur && cur.section === activeSection) scrollToStep(cur.id, true); } } };
+  return d;
+}
+
+function storyCard(opts) {
+  const d = document.createElement('details');
+  d.className = 'story' + (opts.cls ? ' ' + opts.cls : '');
+  if (opts.id) d.id = 'story-' + opts.id;
+  if (opts.id && openStory === opts.id) d.open = true;
+  d.innerHTML = `
+    <summary>
+      <span class="badge">${opts.badge}</span>
+      <span><p class="s-title">${opts.title}</p>${opts.meta ? `<p class="s-meta">${opts.meta}</p>` : ''}</span>
+      ${ICON.chev}
+    </summary>
+    <div class="${opts.bodyCls || 'story-body'}">${opts.body}</div>`;
+  if (opts.id) d.addEventListener('toggle', () => { if (d.open) openStory = opts.id; else if (openStory === opts.id) openStory = null; });
+  return d;
+}
+
+function renderPreread() {
+  const c = document.getElementById('content');
+  c.innerHTML = '';
+  const intro = document.createElement('p');
+  intro.className = 'intro';
+  intro.textContent = 'Read these before you fly. Each rite of Umrah retraces something that happened in these places, and knowing the story turns the steps into memories.';
+  c.appendChild(intro);
+
+  const label = t => { const p = document.createElement('p'); p.className = 'group'; p.textContent = t; c.appendChild(p); };
+  const list = () => { const l = document.createElement('div'); l.className = 'stories'; c.appendChild(l); return l; };
+
+  label("Before you see the Ka'bah");
+  list().appendChild(storyCard({ id:'kaaba', cls:'feature', badge:ICON.kaaba, title:KAABA.title, meta:KAABA.meta, body:KAABA.body }));
+
+  label('Focus stories');
+  const l2 = list();
+  STORIES.forEach((s, i) => {
+    const read = !!readStories[s.id];
+    const card = storyCard({ id:s.id, cls: read ? 'read' : '', badge: read ? ICON.check : i + 1, title:s.title, meta:s.meta, body:s.body });
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'btn' + (read ? ' ghost' : '');
+    b.innerHTML = `${ICON.check}<span>${read ? 'Read · tap to undo' : 'Mark as read'}</span>`;
+    b.onclick = () => {
+      readStories[s.id] = !readStories[s.id];
+      store('labbayk-preread', JSON.stringify(readStories));
+      openStory = readStories[s.id] ? null : s.id;
+      render();
+      const el = document.getElementById('story-' + s.id);
+      if (el) el.scrollIntoView({ block: 'center' });
+    };
+    card.querySelector('.story-body').appendChild(b);
+    l2.appendChild(card);
+  });
+
+  label('More stories for the journey');
+  const l3 = list();
+  MORE.forEach((m, i) => {
+    l3.appendChild(storyCard({ badge: ICON.preread, title:m.title, bodyCls:'short',
+      body:`<p>${m.text}</p><p class="where">${ICON.pin}<span>${g(m.where)}</span></p>` }));
+  });
+
+  const t = document.createElement('div');
+  t.className = 'carry';
+  t.innerHTML = `<h3>Carry these with you</h3><ul>${TAKEAWAYS.map(x => `<li>${x}</li>`).join('')}</ul>`;
+  c.appendChild(t);
+
+  nextButton(c, 'Begin with Ihram', true, () => goTo('ihram'));
+}
+
+document.querySelectorAll('#gender button').forEach(b => {
+  b.onclick = () => { if (gender !== b.dataset.g) { gender = b.dataset.g; store('labbayk-gender', gender); render(); } };
+});
+document.getElementById('aa').onclick = () => { textSize = (textSize + 1) % SIZES.length; store('labbayk-size', String(textSize)); render(); };
+
+// On reopening mid-Umrah, land on the step you're up to.
+if (hasProgress() && currentStep()) { activeSection = currentStep().section; render(); scrollToStep(currentStep().id, false); }
+else render();
+
+// Offline cache when hosted on its own site (e.g. GitHub Pages). Skipped inside Claude.
+try {
+  if ('serviceWorker' in navigator && location.protocol === 'https:' && !/(^|\.)claude\.(ai|com)$|claudeusercontent|anthropic/.test(location.hostname)) {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  }
+} catch (e) {}
+</script>
+</body>
+</html>
