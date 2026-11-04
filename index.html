@@ -141,7 +141,7 @@ details.more[open] summary svg{ transform:rotate(90deg); }
 .btn{ justify-self:start; display:inline-flex; align-items:center; gap:8px; border-radius:99px; padding:9px 16px; font-size:13.5px; font-weight:700; cursor:pointer; border:1.5px solid var(--accent); background:var(--accent); color:var(--accent-ink); transition:all .2s; }
 .btn svg{ width:15px; height:15px; }
 .btn.ghost{ background:transparent; color:var(--muted); border-color:var(--line); }
-.next{ width:100%; margin-top:10px; padding:16px 18px; border-radius:var(--r); border:1px solid var(--line); background:var(--surface); color:var(--ink); font-size:15px; font-weight:700; cursor:display; display:flex; justify-content:space-between; align-items:center; box-shadow:var(--shadow); }
+.next{ width:100%; margin-top:10px; padding:16px 18px; border-radius:var(--r); border:1px solid var(--line); background:var(--surface); color:var(--ink); font-size:15px; font-weight:700; cursor:pointer; display:flex; justify-content:space-between; align-items:center; box-shadow:var(--shadow); }
 .next.ready{ background:var(--accent); border-color:var(--accent); color:var(--accent-ink); }
 .next small{ display:block; font-size:11px; letter-spacing:.12em; text-transform:uppercase; opacity:.7; font-weight:700; text-align:left; }
 .next svg{ width:20px; height:20px; }
@@ -282,104 +282,154 @@ const SECTIONS = [
 
 // ── Pre-read stories ──────────────────────────────────────────────────────────
 const STORIES = [
-  { id:'ibrahim', title:'Ibrahim, Ismail and Hajar', meta:'The origin of the Kaaba, sa\'ee and Zamzam', body:`
-    <h4>The valley</h4>
-    <p>Allah commanded Ibrahim (AS) to take his wife Hajar and their infant son Ismail to a barren valley with no water, no crops and no people. That valley became Makkah. He left them near the spot where the Kaaba would later stand, with only a bag of dates and a skin of water.</p>
-    <p>As he walked away, Hajar followed him and asked again and again why he was leaving them there. He didn't answer. Finally she asked, <em>"Did Allah command you to do this?"</em> He said yes. She replied that, if so, Allah would not abandon them, and she returned to her son. Her certainty is the spirit of the whole pilgrimage. <span class="src">(Ibn Abbas, Sahih al-Bukhari 3364)</span></p>
+  { id:'ibrahim', title:'Ibrahim, Ismail and Hajar', meta:'The origin of the Ka\'bah, sa\'ee and Zamzam', body:`
+    <p>Almost every rite of Umrah goes back to one family who lived about 4,000 years ago. Knowing their story turns the walking, the circling and the drinking of Zamzam into acts of remembrance.</p>
+    <div class="aside"><p><strong>Who's who.</strong> <strong>Ibrahim (AS)</strong> is the prophet known in English as Abraham, honored by Jews, Christians and Muslims. The Qur'an calls him the "friend of Allah." <strong>Hajar (AS)</strong> (Hagar) was his wife, and <strong>Ismail (AS)</strong> (Ishmael) was their baby son. Ismail became the forefather of the Arabs, and the Prophet Muhammad ﷺ is his descendant. "AS" stands for <em>'alayhis-salam</em>, "peace be upon him/her."</p></div>
+
+    <h4>Left in an empty valley</h4>
+    <p>Allah commanded Ibrahim to take Hajar and the infant Ismail from the region of Palestine to a dry valley deep in Arabia, surrounded by bare mountains. There was no water, no farmland and no one living there. That valley is Makkah. Ibrahim left them near the spot where the Ka'bah would later stand, with a bag of dates and a skin of water.</p>
+    <p>As he turned to leave, Hajar followed him, asking again and again why he was leaving them in a place with nothing and no one. He didn't answer. Finally she asked, <em>"Did Allah command you to do this?"</em> He said yes. She replied, <em>"Then He will not abandon us,"</em> and went back to her son. <span class="src">(Narrated by Ibn Abbas in Sahih al-Bukhari 3364, the main source for this whole story.)</span></p>
+    <p>This is the heart of the story. Hajar had no way of knowing how they would survive, but she trusted that a command from Allah would not lead to ruin.</p>
+
     <h4>Ibrahim's du'a</h4>
-    <p>Out of sight, Ibrahim turned toward the place of the House and prayed that Allah make people's hearts incline toward this valley and provide its people with fruits <span class="src">(Qur'an 14:37)</span>. Every crowd in the Haram, and every fruit stall in Makkah, is that du'a being answered.</p>
-    <h4>The search between Safa and Marwah</h4>
-    <p>When the water ran out, Hajar's milk dried up and Ismail began to cry in distress. She climbed Safa to look for anyone, saw no one, and came down. In the low part of the valley she hitched up her dress and <em>ran</em> until she reached Marwah, then climbed it and looked again. She did this seven times.</p>
+    <p>Once he was out of sight, Ibrahim turned back toward the valley and prayed. He asked Allah to make people's hearts long for this place, and to provide its people with fruit so they would be grateful <span class="src">(Qur'an 14:37)</span>. The millions who come every year, and the fruit sold on every street in Makkah today, are that du'a being answered.</p>
+
+    <h4>Hajar's search: the origin of sa'ee</h4>
+    <p>Soon the water ran out. Hajar could no longer nurse, and Ismail began to cry and writhe from thirst. Close by were two small hills, <strong>Safa</strong> and <strong>Marwah</strong>, about 450 meters apart. She climbed Safa and looked out for any person or caravan, but saw no one. She came down, and where the ground dipped into the valley floor she lifted her dress and <em>ran</em> until she reached Marwah. She climbed it and looked again. She went back and forth like this <strong>seven times</strong>.</p>
+    <p>Sa'ee, the second main act of Umrah, is walking those same seven lengths. Both hills are now inside the Grand Mosque, in a long marble gallery. The green lights along the walls mark the low ground where Hajar ran, which is why men jog there.</p>
+
     <h4>Zamzam</h4>
-    <p>On the seventh round she heard a sound. An angel, Jibril, struck the ground near Ismail, and water burst out. Hajar hurried to contain it, building a basin around it with her hands. The Prophet ﷺ said that if she had left it alone, Zamzam would have become a flowing stream on the surface. Soon the Jurhum tribe passed by, saw birds circling, and asked her permission to settle. Makkah began as a town around this well.</p>
-    <h4>The sacrifice</h4>
-    <p>When Ismail was old enough to work beside his father, Ibrahim saw in a dream that he was sacrificing him. Ismail told him to do as he was commanded, and that he would find him patient <span class="src">(Qur'an 37:102)</span>. Both submitted, and Allah ransomed Ismail with a ram. This is the root of Eid al-Adha and of the stoning rituals of Hajj in Mina.</p>
+    <p>At the end of her seventh run she heard a sound. The angel Jibril (Gabriel) struck the ground near Ismail with his heel, and water gushed out. Hajar rushed to contain it, scooping sand into a basin around it with her hands. The Prophet ﷺ later said that if she had left it alone, Zamzam would have become a flowing stream.</p>
+    <p>Water brought life. The Jurhum, an Arab tribe passing through from Yemen, noticed birds circling and asked Hajar's permission to settle by the well. Ismail grew up among them, learned Arabic, and married into the tribe. Makkah began as a small town around Zamzam, and the same well still flows today, about 20 meters from the Ka'bah. You'll find Zamzam coolers throughout the mosque.</p>
+
+    <h4>The great test</h4>
+    <p>When Ismail was a boy old enough to work beside his father, Ibrahim saw in a dream that he was sacrificing his son. For prophets, such dreams are revelation. He told Ismail, who answered: <em>"Father, do as you are commanded. You will find me, if Allah wills, among the patient"</em> <span class="src">(Qur'an 37:102)</span>. As they both submitted, Allah stopped Ibrahim and sent a ram to be sacrificed instead.</p>
+    <p>Muslims remember this every year at <strong>Eid al-Adha</strong> by sacrificing an animal. During Hajj, pilgrims also throw pebbles at pillars in Mina, marking where, according to tradition, Shaytan tried to talk Ibrahim out of obeying. (This happens only in Hajj, not Umrah.)</p>
+
     <h4>Building the House</h4>
-    <p>Years later Ibrahim returned, and father and son raised the foundations of the Kaaba together. Ismail brought the stones and Ibrahim laid them. As the walls grew higher, Ibrahim stood on a stone to keep building. That stone is the <strong>Maqam Ibrahim</strong>, and his footprints are still visible in it. As they worked they prayed:</p>
+    <p>Years later Ibrahim returned, and Allah commanded him and Ismail to build a house of worship in the valley. That house is the <strong>Ka'bah</strong> ("the cube"). It's important to understand what it is: Allah does not live in it. It is the first house built on earth purely for worshipping Him, and it is the <strong>qiblah</strong>, the direction every Muslim faces in prayer.</p>
+    <p>Ismail carried the stones and Ibrahim laid them. When the walls grew too tall, Ibrahim stood on a large stone to keep building. That stone is the <strong>Maqam Ibrahim</strong> ("the standing place of Ibrahim"). It still carries the imprint of his feet and sits in a gold-and-glass case a few meters from the Ka'bah, facing its door. As they worked, father and son prayed:</p>
     <div class="dua-box">
       <p class="dua-arabic">رَبَّنَا تَقَبَّلْ مِنَّا إِنَّكَ أَنْتَ السَّمِيعُ الْعَلِيمُ</p>
       <p class="dua-roman">Rabbanā taqabbal minnā, innaka antas-Samī'ul-'Alīm</p>
       <p class="dua-meaning">Our Lord, accept this from us; You are the All-Hearing, the All-Knowing. (Qur'an 2:127)</p>
     </div>
-    <p>They also asked Allah to send a messenger from among their descendants <span class="src">(2:129)</span>. Muslims understand this du'a to have been fulfilled about 2,500 years later in the Prophet Muhammad ﷺ, a descendant of Ismail.</p>
-    <p>Allah then commanded Ibrahim to call people to pilgrimage <span class="src">(22:27)</span>. Ibrahim asked how his voice could reach anyone, and Allah told him that his task was to call and that Allah would make it reach. Your Talbiyah is the answer to that call.</p>
+    <p>Notice they had just built the House of Allah, and their first concern was whether it would be accepted. In the same prayer they asked Allah to send a messenger from among their descendants to teach them <span class="src">(2:129)</span>. That messenger came about 2,500 years later: the Prophet Muhammad ﷺ, born in this same valley from the line of Ismail.</p>
+
+    <h4>The call to pilgrimage</h4>
+    <p>When the House was finished, Allah told Ibrahim to call all of humanity to come to it on pilgrimage <span class="src">(22:27)</span>. Ibrahim asked how his voice could possibly reach them. Allah told him: your job is to call; it is on Us to make it reach. When you say <em>Labbayk Allahumma labbayk</em> ("Here I am, O Allah, here I am"), you are answering that call.</p>
+
     <div class="live-it"><h5>Where you'll live this story</h5><ul>
+      <li><strong>Talbiyah:</strong> your answer to Ibrahim's call.</li>
       <li><strong>Tawaf</strong> circles the House that Ibrahim and Ismail built.</li>
-      <li><strong>The two rak'ahs after tawaf</strong> are prayed behind Maqam Ibrahim: "Take the station of Ibrahim as a place of prayer" (2:125).</li>
-      <li><strong>Sa'ee</strong> retraces Hajar's steps. The green-lit section marks the low valley floor where she ran. You are walking the path of a mother's trust.</li>
-      <li><strong>Zamzam</strong> is for whatever it is drunk for (Ibn Majah). Make a specific intention each time you drink.</li>
-      <li><strong>Hijr Ismail</strong>, the semicircle beside the Kaaba, is part of the original House. Praying inside it counts as praying inside the Kaaba.</li>
+      <li><strong>The two rak'ahs after tawaf</strong> are prayed behind the Maqam Ibrahim: "Take the station of Ibrahim as a place of prayer" (2:125).</li>
+      <li><strong>Sa'ee</strong> retraces Hajar's seven runs between Safa and Marwah.</li>
+      <li><strong>Zamzam</strong> is the well that saved Ismail. The Prophet ﷺ said it is for whatever it is drunk for (Ibn Majah), so make a du'a each time you drink.</li>
+      <li><strong>Hijr Ismail</strong>, the low semicircular wall beside the Ka'bah, encloses ground that was part of Ibrahim's original House. Praying inside it counts as praying inside the Ka'bah.</li>
     </ul></div>` },
 
   { id:'makkan', title:'The Makkan period', meta:'Revelation at Hira, persecution, the Year of Sorrow', body:`
-    <h4>Before prophethood</h4>
-    <p>The Prophet ﷺ was born in Makkah around 570 CE, in the Year of the Elephant. His father died before he was born, his mother when he was six, and his grandfather Abdul-Muttalib two years later. His uncle Abu Talib raised him. He became known as <strong>al-Amin</strong>, the trustworthy. At 25 he married <strong>Khadijah (RA)</strong>, a respected businesswoman who had employed him in trade.</p>
-    <p>At around 35, the Quraysh rebuilt the Kaaba, and the clans nearly fought over who would set the Black Stone back in place. They agreed to let the next man to enter decide, and it was Muhammad ﷺ. He spread his cloak, placed the Stone on it, had a leader from each clan lift a corner, and then set the Stone in place with his own hands. The Black Stone you'll see was put in place by the Prophet ﷺ himself.</p>
-    <h4>Hira</h4>
-    <p>In his late thirties he began retreating to a small cave near the top of <strong>Jabal al-Nur</strong> to reflect and worship. In Ramadan of 610 CE, at age 40, the angel Jibril appeared and commanded him: <em>"Iqra!"</em> ("Read!"). He answered, "I am not one who reads." Jibril embraced him tightly and repeated the command, three times in all. Then came the first revealed verses:</p>
+    <p>This story covers the 13 years the Prophet ﷺ preached in Makkah before he was forced to leave. Many of the places you'll walk past, including Safa, the Black Stone and the mountains around the city, are part of it.</p>
+    <div class="aside"><p><strong>The setting.</strong> In the centuries after Ibrahim, the people of Makkah drifted from his teaching. By the 500s CE the Ka'bah was surrounded by about 360 idols, and pilgrims came to worship them. The leading tribe was the <strong>Quraysh</strong>, who looked after the Ka'bah and grew rich from trade and pilgrims. The Prophet ﷺ was born into the Quraysh, in the respected clan of <strong>Banu Hashim</strong>.</p></div>
+
+    <h4>Early life</h4>
+    <p>The Prophet Muhammad ﷺ was born in Makkah around 570 CE, the "Year of the Elephant" (see "More stories"). His father died before he was born, his mother when he was six, and the grandfather who then cared for him two years later. His uncle <strong>Abu Talib</strong>, head of Banu Hashim, raised him from then on.</p>
+    <p>He grew up known for his honesty, so much so that people called him <strong>al-Amin</strong>, "the trustworthy." He worked in trade, and at 25 he married <strong>Khadijah (RA)</strong>, a widowed, wealthy merchant who had hired him and admired his character. She proposed to him. They were married for 25 years and had six children, including Fatimah. ("RA" means <em>radiyallahu 'anha/'anhu</em>, "may Allah be pleased with her/him," said for the Prophet's companions.)</p>
+    <p>At about 35, when the Quraysh rebuilt the Ka'bah, he was chosen to settle a dispute over who would set the Black Stone back in its place. That story, and where the Stone comes from, is under "More stories for the journey."</p>
+
+    <h4>The first revelation, at Hira</h4>
+    <p>In his late thirties, the Prophet ﷺ began going to a tiny cave near the top of <strong>Jabal al-Nur</strong> ("the Mountain of Light"), about 4 km from the Ka'bah, to spend days alone in reflection and worship, away from the idol worship of the city.</p>
+    <p>One night in Ramadan in 610 CE, when he was 40, the angel <strong>Jibril</strong>, the angel who brings revelation to the prophets, appeared and commanded him: <em>"Iqra!"</em> ("Read!" or "Recite!"). He couldn't read or write, and answered, "I am not one who reads." Jibril squeezed him tightly and repeated the command three times. Then he revealed the first verses of the Qur'an:</p>
     <div class="dua-box">
       <p class="dua-arabic">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</p>
       <p class="dua-roman">Iqra' bismi rabbikal-ladhī khalaq</p>
       <p class="dua-meaning">Read in the name of your Lord who created. (Qur'an 96:1)</p>
     </div>
-    <p>He came down trembling and went to Khadijah, saying, "Cover me, cover me." She reassured him: Allah would never disgrace him, because he kept family ties, helped the weak, gave to the poor, honored guests, and stood by people in hardship. She became the first person to believe in him. Her cousin <strong>Waraqah ibn Nawfal</strong>, an elderly Christian scholar, recognized this as the same angelic messenger sent to Musa, and warned that his people would drive him out. <span class="src">(Sahih al-Bukhari 3)</span></p>
-    <h4>The call becomes public</h4>
-    <p>After about three years of quiet preaching, the Prophet ﷺ climbed <strong>Safa</strong>, the same hill where you'll begin sa'ee, and called out to the clans of Quraysh. He asked whether they would believe him if he told them an army was behind the hill. They said yes, because they had never known him to lie. He told them he was a warner before a severe punishment. His uncle <strong>Abu Lahab</strong> cursed him, and Surah al-Masad (111) was revealed in response.</p>
-    <h4>Persecution</h4>
+    <p>He came down the mountain shaking and went home to Khadijah, saying, "Cover me, cover me." When he told her he feared for himself, she comforted him: Allah would never disgrace him, because he kept ties with family, helped the weak, gave to the poor, honored guests and stood by people in hardship. She became the first person to believe in him.</p>
+    <p>She took him to her elderly cousin <strong>Waraqah ibn Nawfal</strong>, a Christian who knew the earlier scriptures. Waraqah recognized this as the same angel who had come to Musa (Moses), and warned him that his people would one day drive him out, because every prophet with this message had been opposed. <span class="src">(Sahih al-Bukhari 3)</span></p>
+
+    <h4>From a secret to a public call</h4>
+    <p>For about three years he shared the message quietly. The first to accept it were Khadijah; his young cousin <strong>Ali</strong>, who lived in his house; <strong>Zayd</strong>, a freed slave he had raised as a son; and his closest friend, <strong>Abu Bakr</strong>.</p>
+    <p>Then Allah commanded him to preach openly. He climbed <strong>Safa</strong>, the hill where you'll begin sa'ee, and called the clans of Quraysh together. He asked whether they would believe him if he said an army was behind the hill. "Yes," they said, "we've never known you to lie." He told them he was a warner, sent ahead of a severe punishment. His own uncle <strong>Abu Lahab</strong> shouted back a curse, and Surah al-Masad (111) was revealed about him.</p>
+
+    <h4>Why Makkah turned against him</h4>
+    <p>The message that there is only one God, with no partners, threatened everything the Quraysh leaders had: the idols that drew pilgrims and money to the city, their status, and a society where the rich and noble stood above the poor and enslaved. Islam taught that all people are equal before Allah.</p>
     <ul>
-      <li><strong>Bilal ibn Rabah</strong> was laid on the burning sand with a boulder on his chest. He would only repeat <em>"Ahad, Ahad"</em> ("One, One").</li>
-      <li><strong>Sumayyah</strong>, mother of Ammar, became the first martyr of Islam. The Prophet ﷺ told her family to be patient, because their promised meeting place was Paradise.</li>
-      <li>The Prophet ﷺ himself was mocked and called a madman. Once, while he was in sujood near the Kaaba, filth from a slaughtered camel was dumped on his back. His daughter Fatimah came and cleaned it off.</li>
-      <li>Some Muslims migrated to <strong>Abyssinia</strong> under the just Christian king, the Najashi.</li>
-      <li>The conversions of <strong>Hamza</strong> and then <strong>Umar</strong> gave the Muslims new strength.</li>
-      <li>Around 616 CE the Quraysh imposed a <strong>boycott</strong>, confining the Prophet's clan to a valley for about three years. Hunger was so severe that people ate leaves.</li>
+      <li><strong>Bilal ibn Rabah</strong>, an enslaved Abyssinian (Ethiopian), was laid on the burning sand with a boulder on his chest to force him to give up Islam. He only repeated <em>"Ahad, Ahad"</em> ("One, One"). Abu Bakr bought his freedom. Bilal later became the first mu'adhdhin, the caller to prayer.</li>
+      <li><strong>Sumayyah</strong> and her family were tortured in the open. She was killed by <strong>Abu Jahl</strong>, the fiercest of the Prophet's enemies, and became the first martyr of Islam. The Prophet ﷺ told her family to be patient, because their meeting place was Paradise.</li>
+      <li>The Prophet ﷺ himself was mocked as a madman and a sorcerer. Once, while he was in sujood (prostration) near the Ka'bah, men dumped the guts of a slaughtered camel on his back. His young daughter Fatimah ran over and cleaned it off.</li>
+      <li>To protect the most vulnerable, he sent a group of Muslims to <strong>Abyssinia</strong> (today's Ethiopia), where a just Christian king, the <strong>Najashi</strong> (Negus), gave them safety.</li>
+      <li>Two conversions gave the Muslims new strength: his uncle <strong>Hamza</strong>, a feared warrior, and <strong>Umar ibn al-Khattab</strong>, who had been a fierce opponent and later became the second caliph.</li>
+      <li>Around 616 CE the Quraysh announced a <strong>boycott</strong> of the Prophet's whole clan: no trading with them and no marrying them. For about three years they were confined to a narrow valley on the edge of Makkah, so hungry that people ate leaves.</li>
     </ul>
+
     <h4>The Year of Sorrow (619 CE)</h4>
-    <p>Shortly after the boycott ended, Abu Talib died. He never accepted Islam, but he had protected his nephew all his life. Within weeks, <strong>Khadijah</strong> died: his wife of 25 years, his first believer and his greatest support. He remembered her with deep love for the rest of his life.</p>
+    <p>Soon after the boycott ended, his uncle <strong>Abu Talib</strong> died. He had never accepted Islam, but as clan chief he had protected his nephew for decades, and without him the Prophet ﷺ was exposed to attack. Within weeks, <strong>Khadijah</strong> died too: his wife of 25 years, the first believer, and his greatest support. This year became known as the Year of Sorrow. For the rest of his life he spoke of her with love.</p>
+
     <h4>Ta'if</h4>
-    <p>With his protection gone, he walked to Ta'if to seek support. Its leaders rejected him and set people on him who pelted him with stones until his feet bled. Resting in an orchard, he made a heartbreaking du'a: as long as Allah was not displeased with him, he did not care about anything else. The Angel of the Mountains offered to crush the city between two mountains. He refused, hoping that from their descendants would come people who worship Allah alone. That hope came true.</p>
-    <p>Soon after came the <strong>Isra' and Mi'raj</strong>, the Night Journey from Masjid al-Haram to Jerusalem and the ascension through the heavens, where the five daily prayers were prescribed.</p>
-    <h4>The way out</h4>
-    <p>At the pilgrimage seasons, the Prophet ﷺ met people from Yathrib (Madinah). They pledged allegiance at <strong>Aqabah</strong> in 621 and 622, which opened the door to the Hijrah.</p>
+    <p>With no protection left in Makkah, he walked with Zayd to <strong>Ta'if</strong>, a mountain town about 100 km away, hoping its people would accept the message. Instead its leaders mocked him and set the town's youths on him, who threw stones until his feet bled. Resting in an orchard, he made a heartbreaking du'a: as long as Allah was not angry with him, he did not care what happened to him.</p>
+    <p>Then Jibril came with the Angel of the Mountains, who offered to crush Ta'if between the two mountains around it. The Prophet ﷺ refused. He said he hoped that from their descendants would come people who would worship Allah alone. That hope came true: Ta'if later became Muslim.</p>
+
+    <h4>The Night Journey and Ascension</h4>
+    <p>In this low point Allah honored him with the <strong>Isra' and Mi'raj</strong>. In a single night he was taken from the Masjid al-Haram in Makkah to Masjid al-Aqsa in Jerusalem, where he led the earlier prophets in prayer, and then up through the heavens. There he was given the <strong>five daily prayers</strong>, the most important gift of the journey. In the seventh heaven he saw Ibrahim (AS) leaning against al-Bayt al-Ma'mur, the House of the angels directly above the Ka'bah (see "Looking at the Ka'bah").</p>
+
+    <h4>A door opens</h4>
+    <p>Every year, Arab tribes still came to Makkah on pilgrimage, and the Prophet ﷺ would go from tent to tent inviting them. In 620 a few men from <strong>Yathrib</strong>, a farming town about 450 km north, accepted Islam. Over the next two years they returned in larger numbers and pledged at <strong>'Aqabah</strong>, near Mina, to protect him as they would their own families. Yathrib would soon be renamed <strong>al-Madinah</strong>, "the City" of the Prophet, and this pledge opened the way for the Hijrah.</p>
+
     <div class="live-it"><h5>Where you'll see it</h5><ul>
-      <li><strong>Jabal al-Nur</strong> is visible from much of Makkah. The hike to Hira is steep; go early in the morning. It isn't part of Umrah.</li>
-      <li><strong>Jannat al-Mu'alla</strong> cemetery is where Khadijah is buried.</li>
-      <li><strong>Safa</strong>, where you'll start sa'ee, is where he first preached openly.</li>
-      <li>When you point to <strong>the Black Stone</strong>, remember whose hands set it in place.</li>
+      <li><strong>The Black Stone:</strong> remember whose hands set it in place each time you point to it.</li>
+      <li><strong>Safa:</strong> where you begin sa'ee is where he first preached openly.</li>
+      <li><strong>Jabal al-Nur</strong> is visible from many parts of Makkah. The climb to Hira takes about an hour and is steep, so go early. It isn't part of Umrah.</li>
+      <li><strong>Jannat al-Mu'alla</strong>, the old cemetery north of the Haram, is where Khadijah and Abu Talib are buried.</li>
     </ul></div>` },
 
   { id:'hijrah', title:'The Hijrah', meta:'Cave Thawr, arrival at Quba, the stay with Abu Ayyub al-Ansari', body:`
-    <h4>The plot</h4>
-    <p>By 622 CE most Muslims had quietly left for Madinah. The Quraysh agreed that one young man from each clan would strike the Prophet ﷺ at once, so no single clan could be held responsible. Allah informed him of the plot. That night <strong>Ali (RA)</strong> slept in his bed under his green cloak, and stayed behind to return the valuables people had entrusted to the Prophet. Even his enemies trusted him with their belongings. The Prophet ﷺ walked out past the assassins at his door, reciting from Surah Ya-Sin (36:9), and they did not see him.</p>
+    <p>The <strong>Hijrah</strong> ("migration") is the journey the Prophet ﷺ made from Makkah to Madinah in 622 CE. It was so important that the Islamic calendar counts its years from it: dates written "AH" mean "after the Hijrah." It is the story behind the places you'll visit in Madinah.</p>
+    <div class="aside"><p><strong>Two words you'll hear.</strong> The Muslims who left Makkah for Madinah are the <strong>Muhajirun</strong> ("emigrants"). The Muslims of Madinah who took them in are the <strong>Ansar</strong> ("helpers").</p></div>
+
+    <h4>The plot to kill him</h4>
+    <p>After the pledges at 'Aqabah, the Prophet ﷺ told the Muslims to move to Madinah, and over a few months most of them slipped away quietly, leaving homes and property behind. Only a few remained, including the Prophet ﷺ, Abu Bakr and Ali.</p>
+    <p>The Quraysh leaders met in their council house and agreed on a plan: one young man from every clan would strike him at the same moment, so that the blame would be spread across all the clans and his family couldn't take revenge on any one of them. Allah informed the Prophet ﷺ of the plan and gave him permission to leave.</p>
+    <p>That night his cousin <strong>Ali (RA)</strong> slept in his bed under his green cloak, so the men watching the house would think he was still there. Ali also stayed behind to return the valuables people had left with the Prophet ﷺ for safekeeping. Even the people trying to kill him still trusted him with their belongings. The Prophet ﷺ walked out past the men at his door, reciting from Surah Ya-Sin (36:9), and they did not see him.</p>
+
     <h4>Cave Thawr</h4>
-    <p>He and <strong>Abu Bakr (RA)</strong> headed <em>south</em> to Mount Thawr, the opposite direction from Madinah, and hid in a cave for three nights. The plan was careful:</p>
+    <p>He went to the house of <strong>Abu Bakr (RA)</strong>, his closest friend, who had been waiting for this moment with two camels ready. When Abu Bakr learned he would be the one to travel with him, he wept with joy. His daughter Aishah later said she had never known anyone could cry from happiness until she saw it that day.</p>
+    <p>Instead of heading north toward Madinah, the two went <em>south</em> to <strong>Mount Thawr</strong>, the opposite direction, and hid in a cave near its peak for three nights. Abu Bakr's family made the plan work:</p>
     <ul>
-      <li>Abu Bakr's son <strong>Abdullah</strong> gathered news in Makkah by day and brought it to the cave at night.</li>
-      <li>His freed slave <strong>Amir ibn Fuhayrah</strong> grazed sheep over their tracks to erase them.</li>
-      <li>His daughter <strong>Asma</strong> brought food. She tore her waistband in two to tie up the provisions, and was honored as <em>Dhat an-Nitaqayn</em>, "she of the two waistbands."</li>
-      <li>They hired a guide, <strong>Abdullah ibn Urayqit</strong>, who was not Muslim but was trustworthy.</li>
+      <li>His son <strong>Abdullah</strong> spent each day in Makkah listening to what the Quraysh were saying, and came to the cave at night to report.</li>
+      <li>His freed slave <strong>Amir ibn Fuhayrah</strong> grazed sheep over their tracks to hide them, and brought milk each evening.</li>
+      <li>His daughter <strong>Asma</strong> brought food. When she had nothing to tie the bag with, she tore her waistband in two. The Prophet ﷺ gave her the title <em>Dhat an-Nitaqayn</em>, "she of the two waistbands."</li>
+      <li>They hired a desert guide, <strong>Abdullah ibn Urayqit</strong>. He wasn't Muslim, but he was trustworthy and kept their secret.</li>
     </ul>
-    <p>The Quraysh offered a bounty of 100 camels and sent trackers, who climbed right up to the cave's mouth. Abu Bakr whispered that if one of them looked down at his own feet, he would see them. The Prophet ﷺ answered, <em>"What do you think of two, when Allah is their third?"</em></p>
+    <p>The Quraysh offered a reward of 100 camels, a fortune, for either of them, dead or alive, and sent expert trackers into the hills. The trackers climbed right up to the mouth of the cave. Abu Bakr whispered that if one of them looked down at his own feet, he would see them. The Prophet ﷺ answered, <em>"What do you think of two, when Allah is their third?"</em> Allah preserved the moment in the Qur'an:</p>
     <div class="dua-box">
       <p class="dua-arabic">لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا</p>
       <p class="dua-roman">Lā taḥzan innallāha ma'anā</p>
       <p class="dua-meaning">Do not grieve; indeed Allah is with us. (Qur'an 9:40)</p>
     </div>
-    <p class="src">You'll often hear that a spider spun a web and doves nested at the entrance. That story is widely loved, but its chains of narration are weaker than the core account.</p>
-    <h4>The road</h4>
-    <p>On the way north, <strong>Suraqa ibn Malik</strong> chased them hoping to collect the bounty. Three times his horse's legs sank into the sand. He asked for safety, and the Prophet ﷺ promised he would one day wear the bracelets of Kisra, the Persian emperor. Years later, under Umar's caliphate, Persia's treasures came to Madinah and Umar placed those bracelets on Suraqa's arms.</p>
-    <h4>Quba</h4>
-    <p>The Muslims of Madinah walked out every morning to the edge of the city and waited in the heat until midday. One day a man spotted the travelers and cried out, and the town rushed to greet them. The Prophet ﷺ stayed in <strong>Quba</strong> for several days and laid the foundation of the <strong>first mosque in Islam</strong>, described as founded on taqwa from the first day <span class="src">(9:108)</span>. He ﷺ later said that whoever purifies himself at home, then comes to Masjid Quba and prays there, receives the reward of an umrah <span class="src">(Ibn Majah, an-Nasa'i)</span>. He used to visit it every Saturday.</p>
+    <p class="src">You may hear that a spider spun a web and doves nested over the entrance. It's a beloved story, but its chains of narration are weaker than the main account above.</p>
+
+    <h4>The road north</h4>
+    <p>After three nights the search died down, and the guide led them along a little-used route near the Red Sea coast, about 450 km, roughly two weeks by camel. On the way <strong>Suraqa ibn Malik</strong>, a horseman hoping to collect the reward, caught up with them. Three times his horse's legs sank into the sand. Shaken, he asked for safety. The Prophet ﷺ gave it, and made him a startling promise: one day Suraqa would wear the gold bracelets of Kisra, the emperor of Persia, the superpower of the day. Fifteen years later, when Persia fell and its treasures reached Madinah, the caliph Umar called Suraqa and put those bracelets on his arms.</p>
+
+    <h4>Arriving at Quba</h4>
+    <p>News had reached Madinah that the Prophet ﷺ had left Makkah. Every morning the Muslims walked out to the edge of town and waited in the heat until midday, then went home. One day a man on a rooftop saw white-clad travelers on the horizon and shouted, and the whole town rushed out to greet them.</p>
+    <p>The Prophet ﷺ first stopped at <strong>Quba</strong>, a village about 5 km south of central Madinah, and stayed there several days. With his own hands he helped build the <strong>first mosque in Islam</strong>, which the Qur'an describes as "founded on taqwa (God-consciousness) from the first day" <span class="src">(9:108)</span>. He kept visiting it every Saturday for the rest of his life, and said that whoever makes wudu at home and then prays in Masjid Quba receives the reward of an umrah <span class="src">(Ibn Majah, an-Nasa'i)</span>.</p>
+
     <h4>Entering Madinah</h4>
-    <p>On the way in he led the first Jumu'ah prayer. Every family wanted to host him and grabbed at the reins of his camel, <strong>al-Qaswa</strong>. He told them to let her go, because she was under command. She knelt on a plot belonging to two orphans, Sahl and Suhayl. That land was purchased and became the site of <strong>Masjid an-Nabawi</strong>.</p>
-    <h4>Abu Ayyub al-Ansari</h4>
-    <p>The closest house belonged to <strong>Abu Ayyub (Khalid ibn Zayd)</strong>, and the Prophet ﷺ stayed there about seven months, until his rooms beside the mosque were finished. He chose the ground floor so visitors could reach him easily. Abu Ayyub and his wife were deeply uncomfortable sleeping above him. One night a jar of water broke upstairs, and they used their only blanket to soak it up so not a drop would drip on him. Abu Ayyub then begged him to switch floors, and he agreed. When food was sent back down, they would look for the places the Prophet's fingers had touched and eat from there.</p>
-    <div class="aside"><p>🔗 <strong>A link to your trip:</strong> Decades later, as an old man, Abu Ayyub joined the army besieging Constantinople and died there around 672 CE, asking to be buried as close to the walls as possible. His tomb is the <strong>Eyüp Sultan Mosque</strong> in Istanbul. Visiting it after Madinah ties the two halves of your trip together: where he hosted the Prophet ﷺ, and where he was laid to rest.</p></div>
+    <p>On the way into the city he led the first Friday prayer (Jumu'ah). Then every family he passed begged him to stay with them and reached for the reins of his camel, <strong>al-Qaswa</strong>. He told them to let her go, because she was being guided. She walked on and knelt on an empty plot used for drying dates, owned by two orphan boys, <strong>Sahl</strong> and <strong>Suhayl</strong>. They offered it as a gift, but he insisted on paying for it. On that land he built his mosque, <strong>Masjid an-Nabawi</strong>, where you'll pray in Madinah.</p>
+    <p>He then paired each emigrant from Makkah with one of the Ansar as a "brother." Many Ansar shared their homes, farms and wealth with the newcomers, who had arrived with almost nothing.</p>
+
+    <h4>The guest of Abu Ayyub al-Ansari</h4>
+    <p>The nearest house to where the camel knelt belonged to <strong>Abu Ayyub al-Ansari (RA)</strong>, and the Prophet ﷺ lived there for about seven months while the mosque and his own rooms beside it were built. He chose the ground floor so visitors could reach him easily, and Abu Ayyub and his wife lived upstairs.</p>
+    <p>They were uneasy about living above him. One night a water jar broke upstairs, and they mopped it up with their only blanket so that not a drop would drip on him, then lay awake in the cold. Abu Ayyub begged him to take the upper floor, and he agreed. When the Prophet ﷺ sent back the dishes of food they had brought him, they would look for the places his fingers had touched and eat from there.</p>
+    <div class="aside"><p><strong>A link to your trip:</strong> Decades later, as a very old man, Abu Ayyub joined the army that besieged Constantinople, today's Istanbul. He fell ill there and asked to be buried as close to the city walls as possible. His tomb is the <strong>Eyüp Sultan Mosque</strong>, one of the most visited sites in Istanbul. In Madinah you'll stand where he hosted the Prophet ﷺ; in Istanbul you can visit where he was laid to rest.</p></div>
+
     <div class="live-it"><h5>Where you'll see it</h5><ul>
-      <li><strong>Masjid Quba:</strong> make wudu at the hotel first, then go, for the reward of an umrah.</li>
+      <li><strong>Masjid Quba:</strong> make wudu at your hotel first, then go and pray two rak'ahs, for the reward of an umrah.</li>
       <li><strong>Masjid an-Nabawi</strong> stands on the orphans' land where al-Qaswa knelt.</li>
-      <li><strong>Mount Thawr</strong> is south of Makkah; worth seeing on a ziyarah drive.</li>
-      <li><strong>Eyüp Sultan Mosque</strong> in Istanbul.</li>
+      <li><strong>Mount Thawr</strong> is on the south side of Makkah and is often included in ziyarah tours.</li>
+      <li><strong>Eyüp Sultan Mosque</strong> in Istanbul, where Abu Ayyub is buried.</li>
     </ul></div>` },
 ];
 
@@ -441,9 +491,9 @@ const KAABA = { title:'Looking at the Ka\'bah', meta:'The reward, what it means,
     </ul></div>` };
 
 const MORE = [
+  { title:'The Black Stone', text:"The <strong>Black Stone</strong> (al-Hajar al-Aswad) is set into the eastern corner of the Ka'bah, about chest height. Every circuit of tawaf begins and ends at it.</p><p><strong>Where it comes from:</strong> the Prophet ﷺ said: <em>The Black Stone came down from Paradise. It was whiter than milk, and the sins of the children of Adam turned it black</em> <span class=\"src\">(Tirmidhi 877, graded hasan sahih)</span>. Early scholars reported that the angel Jibril brought it to Ibrahim while he was building the Ka'bah, and that Ibrahim set it in the corner to mark where circling the House begins.</p><p><strong>How the Prophet ﷺ set it in place:</strong> around 605 CE, when he was about 35, a flood damaged the Ka'bah and the Quraysh rebuilt it. When the walls were high enough, the clans nearly came to blows over who would have the honor of putting the Black Stone back. They agreed the next man to walk in would decide, and it was Muhammad. Everyone was relieved: <em>It's al-Amin.</em> He spread his cloak on the ground, placed the Stone in the middle, had one leader from each clan lift a corner, and then set the Stone in the wall with his own hands. Everyone shared the honor and no blood was shed.</p><p><strong>What you'll see today:</strong> the Stone was broken into pieces over the centuries. Most notoriously, a rebel group called the Qaramitah carried it off in 930 CE and kept it for about 22 years. The pieces are now held together in a silver frame: you'll see a silver casing with dark stone visible through an opening in the middle.</p><p><strong>Why we touch or point to it:</strong> the Prophet ﷺ kissed it, and said it will come on the Day of Judgment with eyes to see and a tongue to speak, testifying for everyone who touched it sincerely <span class=\"src\">(Tirmidhi 961)</span>. It is not worshipped. Umar (RA) kissed it and said: <em>I know you are only a stone that can neither harm nor benefit. Had I not seen the Messenger of Allah kiss you, I would not kiss you</em> <span class=\"src\">(Sahih al-Bukhari)</span>. Every ritual is about following the Prophet ﷺ and obeying Allah, not the objects themselves.", where:"At the eastern corner of the Ka'bah, marked by a green light on the wall opposite. If the crowd is heavy, pointing from a distance carries the full sunnah." },
   { title:'The Year of the Elephant', text:"Abraha, the Abyssinian governor of Yemen, marched on Makkah with an elephant to destroy the Kaaba. Abdul-Muttalib asked him only for his camels back: he owned the camels, and the House had its own Lord to protect it. Flocks of birds pelted the army with stones of baked clay (Surah al-Fil). The Prophet ﷺ was born that same year.", where:'Recite Surah al-Fil while looking at the Kaaba.' },
   { title:'Hudaybiyyah and the origin of ramal', text:"In 6 AH the Prophet ﷺ set out with about 1,400 companions to perform umrah and was blocked at Hudaybiyyah. The treaty seemed humiliating, but the Qur'an called it a clear victory (Surah al-Fath). The next year they returned for 'Umrat al-Qada. The Quraysh had said Madinah's fever had weakened them, so the men bared their right shoulders (idtiba') and walked briskly (ramal) in the first three circuits to show strength. The Prophet ﷺ performed four umrahs in his lifetime.", where:{ f:"You'll see the men around you doing this in tawaf. Women walk normally.", m:"You'll do both yourself in the tawaf of your Umrah." } },
-  { title:'Umar and the Black Stone', text:"Umar (RA) kissed the Black Stone and said he knew it was only a stone that could neither harm nor benefit, and that he would not have kissed it had he not seen the Prophet ﷺ do so (Bukhari). Every ritual is about following the Prophet ﷺ and obeying Allah, not the objects themselves.", where:'If the crowd is heavy, pointing from a distance is fully sunnah.' },
   { title:'The Conquest of Makkah', text:"In 8 AH the man who had been driven out of Makkah returned with 10,000 companions, head bowed so low it nearly touched his saddle. He circled the Kaaba and knocked down its 360 idols, reciting \"Truth has come and falsehood has vanished\" (17:81). He told the Quraysh who had persecuted him that they were free to go. Bilal, once tortured on Makkah's sands, climbed the Kaaba and gave the adhan. The Prophet ﷺ returned the Kaaba's key to Uthman ibn Talha's family, the Banu Shaybah, who still hold it today.", where:'Every adhan you hear in the Haram echoes that first one from the Kaaba.' },
   { title:'The weeping tree trunk', text:"The Prophet ﷺ used to deliver sermons leaning against a palm trunk. When a wooden minbar was built, the trunk cried out like a child until he came down and embraced it (Bukhari). He ﷺ said the area between his house and his minbar is a garden from the gardens of Paradise.", where:'The pillar al-Hannanah marks the spot, by the Rawdah.' },
   { title:'The change of qibla', text:"For about 16 to 17 months in Madinah, Muslims prayed toward Jerusalem. During a prayer, revelation came commanding them to turn toward the Kaaba (2:144), and the congregation turned mid-prayer.", where:'Masjid al-Qiblatayn, "the mosque of the two qiblas," in Madinah.' },
@@ -481,7 +531,7 @@ const STEPS = [
   { id:'i3', section:'ihram',
     text:"Pray 2 rak'ahs with the intention of Ihram, if it is not a disliked time.",
     note:{ f:"Recite Surah Al-Kafirun in the 1st rak'ah and Surah Al-Ikhlas in the 2nd.", m:"Recite Surah Al-Kafirun in the 1st rak'ah and Surah Al-Ikhlas in the 2nd. Keep both shoulders covered with the rida for this prayer." },
-    detail:{ tips:['This prayer is sunnah in the Hanafi school, not required.','Disliked times: from Fajr until about 15 minutes after sunrise, from Asr until sunset, and the few minutes when the sun at its peak. At those times, skip the prayer and go straight to your intention.'] }
+    detail:{ tips:['This prayer is sunnah in the Hanafi school, not required.','Disliked times: from Fajr until about 15 minutes after sunrise, from Asr until sunset, and the few minutes when the sun is at its peak. At those times, skip the prayer and go straight to your intention.'] }
   },
   { id:'i4', section:'ihram',
     text:'At the Miqat — or just before the plane crosses it — make your intention for Umrah, then say the Talbiyah straight away (next step).',
